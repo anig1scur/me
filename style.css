@@ -1,0 +1,14 @@
+@layer base {
+  a {
+    @apply underline underline-offset-2;
+
+  }
+}
+
+@layer components {}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
