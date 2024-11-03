@@ -10,66 +10,91 @@
     <script src="./js/tailwind.config.js"></script>
     <script src="./js/router.js"></script>
     <script src="./js/alpine.js" defer></script>
-    <style>
-        @layer base {}
 
-        @layer components {}
-
-        @layer utilities {}
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
-<body class="bg-[#ECF2E7] h-dvh text-[#3F4F26] tracking-wide font-sans min-h-dvh flex justify-center">
-    <div class="max-w-2xl sm:text-xl text-lg overflow-x-hidden p-6 w-screen" x-data>
-        <template x-route="/">
-            <div>
-                <div class="flex items-center mb-6 gap-2 sm:mt-4">
-                    <h1 class="text-4xl font-bold whitespace-nowrap">Hi, I am
-                    </h1>
-                    <div class="inline-block bg-eunice w-56 h-20 bg-center bg-no-repeat bg-contain"></div>
-                </div>
-                <div class="flex items-center gap-4 mb-4">
-                    <p class="flex-[100%] lg:leading-8 sm:leading-7 leading-[1.5]">
-                        I used to be a Front End Engineer. Now I'm on my way to becoming an indie developer :D
-                    </p>
-                    <div
-                        class="inline-block sm:mr-12 bg-avatar sm:min-w-28 sm:min-h-28 min-w-24 min-h-24 bg-center bg-no-repeat bg-contain">
-                    </div>
-                </div>
-                <p class="lg:leading-8 sm:leading-7 leading-[1.5]">
-                    I'm interested in creating designs that blend aesthetics with practicality, benefiting users in
-                    meaningful
-                    ways.
-                </p>
+<body>
+    <div class="h-dvh tracking-wide min-h-dvh flex justify-center">
+        <div class="max-w-2xl sm:text-xl text-lg overflow-x-hidden p-6 w-screen">
+            <div id="app"></div>
+            <div x-data="router()">
+                <template x-route="/">
+                    <div>
+                        <div class="flex items-center mb-6 gap-2 sm:mt-4 lg:mt-10">
+                            <h1 class="text-4xl font-bold whitespace-nowrap">Hi, I am
+                            </h1>
+                            <div class="inline-block bg-eunice w-56 h-20 bg-center bg-no-repeat bg-contain"></div>
+                        </div>
+                        <div class="flex items-center gap-4 mb-4">
+                            <p class="flex-[100%] lg:leading-8 sm:leading-7 leading-[1.5]">
+                                I used to be a Front End Engineer. Now I'm on my way to becoming an indie developer :D
+                            </p>
+                            <div
+                                class="inline-block sm:mr-12 bg-avatar sm:min-w-28 sm:min-h-28 min-w-24 min-h-24 bg-center bg-no-repeat bg-contain">
+                            </div>
+                        </div>
+                        <p class="lg:leading-8 sm:leading-7 leading-[1.5]">
+                            I'm interested in creating designs that blend aesthetics with practicality, benefiting users
+                            in
+                            meaningful
+                            ways.
+                        </p>
 
-                <div class="sm:mt-16 mt-6">
-                    <a href="/project"
-                        class="hover:animate-wiggle block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
-                    </a>
-                    <a href="/adventure"
-                        class="hover:animate-wiggle inline-block bg-travel mb-4 w-60 h-16 bg-left bg-no-repeat bg-contain">
-                    </a>
-                    <div class="flex items-center gap-2">
-                        <a href="/painting"
-                            class="hover:animate-wiggle w-[70%] h-24 bg-paint bg-center bg-no-repeat bg-contain">
-                        </a>
-                        <a target="_blank" href="https://channel.piggy.lol/"
-                            class="hover:animate-wiggle w-[30%] h-28 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
-                        </a>
+                        <div class="sm:mt-16 2xl:mt-24 mt-6">
+                            <a href="/project"
+                                class="hover:animate-wiggle block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
+                            </a>
+                            <a href="/adventure"
+                                class="hover:animate-wiggle inline-block bg-travel mb-4 w-60 h-16 bg-left bg-no-repeat bg-contain">
+                            </a>
+                            <div class="flex items-center gap-2">
+                                <a href="/painting"
+                                    class="hover:animate-wiggle w-[70%] h-24 bg-paint bg-center bg-no-repeat bg-contain">
+                                </a>
+                                <a target="_blank" href="https://channel.piggy.lol/"
+                                    class="hover:animate-wiggle w-[30%] h-28 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </template>
+                <template x-route="/project" x-template.preload="/views/project.html"
+                    x-handler="updateRoute"></template>
+                <template x-route="/adventure" x-template.preload="/views/adventure.html"
+                    x-handler="updateRoute"></template>
+                <template x-route="/painting" x-template.preload="/views/painting.html"
+                    x-handler="updateRoute"></template>
+                <template x-route="notfound">
+                    <div>
+                        <h1>Page Not Found</h1>
+                    </div>
+                </template>
             </div>
-        </template>
 
-        <template x-route="/project" x-template.preload="/views/project.html"></template>
-        <template x-route="/adventure" x-template.preload="/views/adventure.html"></template>
-        <template x-route="/painting" x-template.preload="/views/painting.html"></template>
-        <template x-route="notfound">
-            <div>
-                <h1>Page Not Found</h1>
-            </div>
-        </template>
+        </div>
     </div>
+
+    <script>
+        function router () {
+            return {
+                updateRoute (context) {
+                    document.body.className = context.route.slice(1)
+                }
+            }
+        }
+
+        window.addEventListener('hashchange', () => {
+            document.body.className = window.location.hash.slice(2)
+        })
+        document.addEventListener('alpine:init', () => {
+            // does browserrouter work in Github Pages?
+            window.PineconeRouter.settings.hash = true
+            window.PineconeRouter.settings.basePath = '/'
+            window.PineconeRouter.settings.templateTargetId = 'app'
+            window.PineconeRouter.settings.interceptLinks = true
+        })
+    </script>
 </body>
 
 </html>

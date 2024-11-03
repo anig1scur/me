@@ -1,7 +1,43 @@
+/* font */
+
+
+@font-face {
+  font-family: 'pixel';
+  src: url('./assets/fonts/PixelifySans-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'pixel';
+  src: url('./assets/fonts/PixelifySans-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   a {
     @apply underline underline-offset-2;
+  }
 
+  body {
+    background-color: #ECF2E7;
+    color: #3F4F26;
+  }
+
+  body.project {
+    background-color: #FFE1E7;
+    color: #E26B81;
+  }
+
+  body.adventure {
+    background-color: #F9E4B7;
+    color: #E9B44C;
+  }
+
+  body.painting {
+    background-color: #D6EAF8;
+    color: #3498DB;
   }
 }
 

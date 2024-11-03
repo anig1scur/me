@@ -18,6 +18,9 @@ tailwind.config = {
         memo: "url('./assets/memo.svg')",
         avatar: "url('./assets/eunice_avatar.png')",
       },
+      fontFamily: {
+        'pixel': ['pixel', 'sans-serif'],
+      }
     }
   }
 }
