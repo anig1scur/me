@@ -7,24 +7,23 @@
     <title>Capricious Eunice</title>
     <link rel="icon" href="./favicon.png" />
     <script src="./js/tailwincss.js"></script>
-    <script src="./js/tailwind.config.js"></script>
     <script src="./js/router.js"></script>
     <script src="./js/alpine.js" defer></script>
-
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <div class="h-dvh tracking-wide min-h-dvh flex justify-center">
-        <div class="max-w-2xl sm:text-xl text-lg overflow-x-hidden p-6 w-screen">
+        <div class="max-w-2xl sm:text-lg text-md overflow-x-hidden p-6 w-screen">
             <div id="app"></div>
             <div x-data="router()">
                 <template x-route="/">
                     <div>
-                        <div class="flex items-center mb-6 gap-2 sm:mt-4 lg:mt-10">
-                            <h1 class="text-4xl font-bold whitespace-nowrap">Hi, I am
+                        <div class="flex items-center mb-6 gap-2 sm:gap-4 sm:mt-4 lg:mt-8">
+                            <h1 class="text-4xl sm:text-5xl font-bold whitespace-nowrap">Hi, I am
                             </h1>
-                            <div class="inline-block bg-eunice w-56 h-20 bg-center bg-no-repeat bg-contain"></div>
+                            <div class="inline-block bg-eunice w-56 h-20 sm:w-64 bg-center bg-no-repeat bg-contain">
+                            </div>
                         </div>
                         <div class="flex items-center gap-4 mb-4">
                             <p class="flex-[100%] lg:leading-8 sm:leading-7 leading-[1.5]">
@@ -92,8 +91,54 @@
             window.PineconeRouter.settings.hash = true
             window.PineconeRouter.settings.basePath = '/'
             window.PineconeRouter.settings.templateTargetId = 'app'
-            window.PineconeRouter.settings.interceptLinks = true
+            window.PineconeRouter.settings.interceptLinks = true;
         })
+    </script>
+    <script defer>
+        function initProjects () {
+            return {
+                projects: [
+                    {
+                        title: "No PCR Challenge",
+                        description: `It was born during a hackathon in the fall of 2022. It's a game where players decide whether they need a PCR test based on the number of days since their last test and their travel requirements.
+
+                        The project emerged in response to the endless PCR testing demands in Beijing at that time. Although it can't be open-sourced for various reasons, I really love the idea behind it. My colleagues in backend, frontend, and design completed it together while we were in lockdown.
+
+                        The repository is humorously titled "Have you done nuclear acid today?" originally reflecting a playful take on the term "核酸"
+                        `,
+                        assets: ["./assets/projects/no-pcr.png", "./assets/projects/no-pcr-2.png"]
+                    }
+                ]
+            }
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    keyframes: {
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(8deg)' },
+                        }
+                    },
+                    animation: {
+                        wiggle: 'wiggle 1s ease-in-out infinite',
+                    },
+                    backgroundImage: {
+                        eunice: "url('./assets/eunice.png')",
+                        paint: "url('./assets/painting.svg')",
+                        project: "url('./assets/project.svg')",
+                        travel: "url('./assets/travel.svg')",
+                        memo: "url('./assets/memo.svg')",
+                        avatar: "url('./assets/eunice_avatar.png')",
+                    },
+                    fontFamily: {
+                        'pixel': ['pixel', 'sans-serif'],
+                    }
+                }
+            }
+        }
     </script>
 </body>
 

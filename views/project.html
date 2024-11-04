@@ -1,6 +1,60 @@
-<div>
+<div x-data="initProjects()" class="font-pixel">
     <div class="flex items-center gap-3 font-pixel lg:mt-10">
         <div class="p-2 bg-[#E26B81] w-fit text-white">SELECTED</div>
-        <div class="text-2xl">WORK</div>
+        <div class="text-2xl text-[#E26B81]">WORK</div>
+    </div>
+    <div class="mt-6 flex flex-col">
+        <template x-for="project in projects" :key="project.id">
+            <div class="flex gap-5 mb-4 flex-col sm:flex-row items-center sm:items-start">
+                <div class="flex-[100%] lg:leading-7 sm:leading-6 leading-[1.54]">
+                    <h2 x-text="project.title" class="text-4xl mb-4 md:text-5xl font-bold"></h2>
+                    <p x-text="project.description"
+                        class="font-sans text-sm font-light whitespace-pre-line lg:leading-6 leading-[1.5]"></p>
+                </div>
+
+                <div class="sm:w-1/2 ">
+                    <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id"
+                        x-data="{ activeSlide: 1, slides: project.assets.length }">
+                        <!-- Slides -->
+                        <template x-for="(asset, index) in project.assets" :key="index">
+                            <div x-show="activeSlide === index + 1" class="rounded-lg overflow-hidden">
+                                <img :src="asset" :alt="'Project image ' + (index + 1)"
+                                    class="w-full h-full object-cover">
+                            </div>
+                        </template>
+
+                        <div class="absolute inset-0 flex" x-show="slides > 1">
+                            <div class="flex items-center justify-start w-1/2">
+                                <button
+                                    class="bg-opacity-70 bg-pink-100 text-gray-500 hover:text-[#E26B81] font-bold hover:shadow-lg rounded-full w-6 h-6 -ml-3"
+                                    x-on:click="activeSlide = activeSlide === 1 ? slides : activeSlide - 1">
+                                    &#8592;
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-end w-1/2">
+                                <button
+                                    class="bg-opacity-70 bg-pink-100 text-gray-500 hover:text-[#E26B81] font-bold hover:shadow rounded-full w-6 h-6 -mr-3"
+                                    x-on:click="activeSlide = activeSlide === slides ? 1 : activeSlide + 1">
+                                    &#8594;
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <div class="absolute w-full flex items-center justify-center px-4" x-show="slides > 1">
+                            <template x-for="index in slides" :key="index">
+                                <button
+                                    class="flex-1 w-4 h-2 mt-4 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:bg-[#E26B81] hover:shadow-lg"
+                                    :class="{
+                                        'bg-[#E26B81]': activeSlide === index,
+                                        'bg-zinc-500': activeSlide !== index 
+                                    }" x-on:click="activeSlide = index">
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
     </div>
 </div>
