@@ -42,17 +42,17 @@
 
                         <div class="sm:mt-16 2xl:mt-24 mt-6">
                             <a href="/project"
-                                class="hover:animate-wiggle block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
+                                class="hover:animate-wiggle animate-fadeUp block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
                             </a>
                             <a href="/adventure"
-                                class="hover:animate-wiggle inline-block bg-travel mb-4 w-60 h-16 bg-left bg-no-repeat bg-contain">
+                                class="hover:animate-wiggle animate-[fadeUp_0.5s_ease-in] inline-block bg-travel mb-4 w-60 h-16 bg-left bg-no-repeat bg-contain">
                             </a>
                             <div class="flex items-center gap-2">
                                 <a href="/painting"
-                                    class="hover:animate-wiggle w-[70%] h-24 bg-paint bg-center bg-no-repeat bg-contain">
+                                    class="hover:animate-wiggle animate-[fadeUp_0.7s_ease-in] w-[70%] h-24 bg-paint bg-center bg-no-repeat bg-contain">
                                 </a>
                                 <a target="_blank" href="https://channel.piggy.lol/"
-                                    class="hover:animate-wiggle w-[30%] h-28 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
+                                    class="hover:animate-wiggle animate-[fadeUp_0.9s_ease-in] w-[30%] h-28 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
                                 </a>
                             </div>
                         </div>
@@ -123,10 +123,15 @@
                         wiggle: {
                             '0%, 100%': { transform: 'rotate(-3deg)' },
                             '50%': { transform: 'rotate(8deg)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     },
                     animation: {
                         wiggle: 'wiggle 1s ease-in-out infinite',
+                        fadeUp: 'fadeUp 0.4s ease-in'
                     },
                     backgroundImage: {
                         eunice: "url('./assets/eunice.png')",
