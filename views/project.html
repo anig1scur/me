@@ -7,33 +7,70 @@
         <template x-for="project in projects" :key="project.id">
             <div class="flex gap-5 mb-4 flex-col sm:flex-row items-center sm:items-start">
                 <div class="flex-[100%] lg:leading-7 sm:leading-6 leading-[1.54]">
-                    <h2 x-text="project.title" class="text-4xl mb-4 md:text-5xl font-bold"></h2>
-                    <p x-text="project.description"
-                        class="font-sans text-sm font-light whitespace-pre-line lg:leading-6 leading-[1.5]"></p>
-                </div>
+                    <a x-text="project.title" :href="project.url" target="_blank"
+                        class="text-4xl mb-4 md:text-5xl font-bold "></a>
+                    <div>
+                        <template x-if="project.created">
+                            <p x-text="'Created on: ' + project.created" class="text-[#E26B81] text-sm mt-2 mb-1"></p>
+                        </template>
 
+                        <template x-if="project.techstacks && project.techstacks.length">
+                            <p class="text-sm mt-1 text-[#E26B81]">
+                                <span>Tech Stacks:</span>
+                                <span x-text="project.techstacks.join(', ')"></span>
+                            </p>
+                        </template>
+                    </div>
+
+                    <div x-data="{
+                        isExpanded: false,
+                        maxLength: 150,
+                        isMobile: window.innerWidth <= 640,
+                        get truncatedDescription() {
+                            return this.isMobile && project.description.length > this.maxLength && !this.isExpanded
+                                ? project.description.substring(0, this.maxLength) + '...'
+                                : project.description;
+                        }
+                    }" class="mt-4">
+                        <p x-text="truncatedDescription" @click="isExpanded = !isExpanded"
+                            class="inline text-base font-light whitespace-pre-line lg:leading-6 leading-[1.5] cursor-pointer">
+                        </p>
+
+                        <button x-show="isMobile && project.description.length > maxLength" @click="isExpanded = !isExpanded"
+                            class="text-[#E26B81] hover:text-[#c55b6e] text-sm"
+                            x-text="isExpanded ? '↥less' : '↧more'"></button>
+                    </div>
+                </div>
                 <div class="sm:w-1/2 ">
                     <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id"
                         x-data="{ activeSlide: 1, slides: project.assets.length }">
                         <!-- Slides -->
                         <template x-for="(asset, index) in project.assets" :key="index">
                             <div x-show="activeSlide === index + 1" class="rounded-lg overflow-hidden">
-                                <img :src="asset" :alt="'Project image ' + (index + 1)"
-                                    class="w-full h-full object-cover">
+                                <template x-if="asset.endsWith('.mp4')">
+                                    <video controls="false" preload autoplay muted loop playsinline
+                                        class="w-full h-full object-cover">
+                                        <source :src="asset" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </template>
+                                <template x-if="!asset.endsWith('.mp4')">
+                                    <img :src="asset" :alt="asset.split('/').pop().split('.')[0]"
+                                        class="w-full h-full object-cover min-w-full min-h-full">
+                                </template>
                             </div>
                         </template>
-
                         <div class="absolute inset-0 flex" x-show="slides > 1">
                             <div class="flex items-center justify-start w-1/2">
                                 <button
-                                    class="bg-opacity-70 bg-pink-100 text-gray-500 hover:text-[#E26B81] font-bold hover:shadow-lg rounded-full w-6 h-6 -ml-3"
+                                    class="bg-opacity-20 bg-[#E26B81] text-white hover:text-[#E26B81] font-bold hover:shadow-lg rounded-full w-6 h-6 -ml-3"
                                     x-on:click="activeSlide = activeSlide === 1 ? slides : activeSlide - 1">
                                     &#8592;
                                 </button>
                             </div>
                             <div class="flex items-center justify-end w-1/2">
                                 <button
-                                    class="bg-opacity-70 bg-pink-100 text-gray-500 hover:text-[#E26B81] font-bold hover:shadow rounded-full w-6 h-6 -mr-3"
+                                    class="bg-opacity-20 bg-[#E26B81] text-white hover:text-[#E26B81] font-bold hover:shadow rounded-full w-6 h-6 -mr-3"
                                     x-on:click="activeSlide = activeSlide === slides ? 1 : activeSlide + 1">
                                     &#8594;
                                 </button>

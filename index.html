@@ -14,7 +14,7 @@
 
 <body>
     <div class="h-dvh tracking-wide min-h-dvh flex justify-center">
-        <div class="max-w-2xl sm:text-lg text-md overflow-x-hidden p-6 w-screen">
+        <div class="max-w-2xl sm:text-lg text-md overflow-x-hidden p-6 lg:px-2 w-screen">
             <div id="app"></div>
             <div x-data="router()">
                 <template x-route="/">
@@ -100,13 +100,16 @@
                 projects: [
                     {
                         title: "No PCR Challenge",
+                        created: "2022/10",
+                        url: "###",
+                        techstacks: ["React.js", "Tailwind CSS"],
                         description: `It was born during a hackathon in the fall of 2022. It's a game where players decide whether they need a PCR test based on the number of days since their last test and their travel requirements.
 
                         The project emerged in response to the endless PCR testing demands in Beijing at that time. Although it can't be open-sourced for various reasons, I really love the idea behind it. My colleagues in backend, frontend, and design completed it together while we were in lockdown.
 
                         The repository is humorously titled "Have you done nuclear acid today?" originally reflecting a playful take on the term "核酸"
                         `,
-                        assets: ["./assets/projects/no-pcr.png", "./assets/projects/no-pcr-2.png"]
+                        assets: ["./assets/projects/no-pcr.png", "./assets/projects/no-pcr-2.png", "./assets/projects/no-pcr.mp4"]
                     }
                 ]
             }
