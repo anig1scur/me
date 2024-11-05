@@ -3,15 +3,16 @@
         <div class="p-2 bg-[#E26B81] w-fit text-white">SELECTED</div>
         <div class="text-2xl text-[#E26B81]">WORK</div>
     </div>
-    <div class="mt-6 flex flex-col">
+    <div class="mt-4 md:mt-8 flex flex-col gap-16 md:gap-24 pb-8">
         <template x-for="project in projects" :key="project.id">
-            <div class="flex gap-5 mb-4 flex-col sm:flex-row items-center sm:items-start">
-                <div class="flex-[100%] lg:leading-7 sm:leading-6 leading-[1.54]">
+            <div>
+                <div class="md:inline-block lg:leading-7 md:leading-6 leading-[1.54] sticky top-2 z-10 bg-[#FFE1E7] bg-opacity-30 backdrop-blur-sm py-2">
                     <a x-text="project.title" :href="project.url" target="_blank"
-                        class="text-4xl mb-4 md:text-5xl font-bold "></a>
+                        class="text-4xl mb-2 md:gap-4 md:text-5xl font-bold block"></a>
                     <div>
                         <template x-if="project.created">
-                            <p x-text="'Created on: ' + project.created" class="text-[#E26B81] text-sm mt-2 mb-1"></p>
+                            <p x-text="'Created on: ' + project.created" class="text-[#E26B81] text-sm mt-2 mb-1">
+                            </p>
                         </template>
 
                         <template x-if="project.techstacks && project.techstacks.length">
@@ -21,73 +22,78 @@
                             </p>
                         </template>
                     </div>
-
+                </div>
+                <div class="flex flex-col md:flex-row gap-5 items-center">
                     <div x-data="{
-                        isExpanded: false,
-                        maxLength: 150,
-                        isMobile: window.innerWidth <= 640,
-                        get truncatedDescription() {
-                            return this.isMobile && project.description.length > this.maxLength && !this.isExpanded
-                                ? project.description.substring(0, this.maxLength) + '...'
-                                : project.description;
-                        }
-                    }" class="mt-4">
+                    isExpanded: false,
+                    maxLength: 240,
+                    isMobile: window.innerWidth <= 640,
+                    get truncatedDescription() {
+                        return this.isMobile && project.description.length > this.maxLength && !this.isExpanded
+                            ? project.description.substring(0, this.maxLength) + '...'
+                            : project.description;
+                    }
+                }" class="mt-2 md:mt-4 flex-[100%]">
                         <p x-text="truncatedDescription" @click="isExpanded = !isExpanded"
-                            class="inline text-base font-light whitespace-pre-line lg:leading-6 leading-[1.5] cursor-pointer">
+                            class="inline text-base font-light whitespace-pre-line lg:leading-6 leading-[1.5]" :class="{
+                            'cursor-pointer': isMobile && project.description.length > maxLength
+                        }">
                         </p>
 
-                        <button x-show="isMobile && project.description.length > maxLength" @click="isExpanded = !isExpanded"
-                            class="text-[#E26B81] hover:text-[#c55b6e] text-sm"
+                        <button x-show="isMobile && project.description.length > maxLength"
+                            @click="isExpanded = !isExpanded" class="text-[#E26B81] hover:text-[#c55b6e] text-sm"
                             x-text="isExpanded ? '↥less' : '↧more'"></button>
                     </div>
-                </div>
-                <div class="sm:w-1/2 ">
-                    <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id"
-                        x-data="{ activeSlide: 1, slides: project.assets.length }">
-                        <!-- Slides -->
-                        <template x-for="(asset, index) in project.assets" :key="index">
-                            <div x-show="activeSlide === index + 1" class="rounded-lg overflow-hidden">
-                                <template x-if="asset.endsWith('.mp4')">
-                                    <video controls="false" preload autoplay muted loop playsinline
-                                        class="w-full h-full object-cover">
-                                        <source :src="asset" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </template>
-                                <template x-if="!asset.endsWith('.mp4')">
-                                    <img :src="asset" :alt="asset.split('/').pop().split('.')[0]"
-                                        class="w-full h-full object-cover min-w-full min-h-full">
-                                </template>
+                    <div class="md:w-1/2 md:-mt-28">
+                        <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id"
+                            x-data="{ activeSlide: 1, slides: project.assets.length }">
+                            <!-- Slides -->
+                            <template x-for="(asset, index) in project.assets" :key="index">
+                                <div x-show="activeSlide === index + 1" class="rounded-lg overflow-hidden">
+                                    <template x-if="asset.endsWith('.mp4')">
+                                        <video controls="false" preload autoplay muted loop playsinline
+                                            class="w-full h-full object-cover">
+                                            <source :src="asset" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </template>
+                                    <template x-if="!asset.endsWith('.mp4')">
+                                        <div class="relative w-full" :class="'aspect-[' + project.assetsAspect + ']'">
+                                            <img :src="asset" :alt="asset.split('/').pop().split('.')[0]"
+                                                class="w-full h-full object-contain md:absolute">
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <div class="absolute inset-0 flex" x-show="slides > 1">
+                                <div class="flex items-center justify-start w-1/2">
+                                    <button
+                                        class="bg-opacity-20 bg-[#E26B81] text-white hover:text-[#E26B81] font-bold hover:shadow-lg rounded-full w-6 h-6 -ml-3"
+                                        x-on:click="activeSlide = activeSlide === 1 ? slides : activeSlide - 1">
+                                        &#8592;
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-end w-1/2">
+                                    <button
+                                        class="bg-opacity-20 bg-[#E26B81] text-white hover:text-[#E26B81] font-bold hover:shadow rounded-full w-6 h-6 -mr-3"
+                                        x-on:click="activeSlide = activeSlide === slides ? 1 : activeSlide + 1">
+                                        &#8594;
+                                    </button>
+                                </div>
                             </div>
-                        </template>
-                        <div class="absolute inset-0 flex" x-show="slides > 1">
-                            <div class="flex items-center justify-start w-1/2">
-                                <button
-                                    class="bg-opacity-20 bg-[#E26B81] text-white hover:text-[#E26B81] font-bold hover:shadow-lg rounded-full w-6 h-6 -ml-3"
-                                    x-on:click="activeSlide = activeSlide === 1 ? slides : activeSlide - 1">
-                                    &#8592;
-                                </button>
-                            </div>
-                            <div class="flex items-center justify-end w-1/2">
-                                <button
-                                    class="bg-opacity-20 bg-[#E26B81] text-white hover:text-[#E26B81] font-bold hover:shadow rounded-full w-6 h-6 -mr-3"
-                                    x-on:click="activeSlide = activeSlide === slides ? 1 : activeSlide + 1">
-                                    &#8594;
-                                </button>
-                            </div>
-                        </div>
 
-                        <!-- Navigation Buttons -->
-                        <div class="absolute w-full flex items-center justify-center px-4" x-show="slides > 1">
-                            <template x-for="index in slides" :key="index">
-                                <button
-                                    class="flex-1 w-4 h-2 mt-4 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:bg-[#E26B81] hover:shadow-lg"
-                                    :class="{
+                            <!-- Navigation Buttons -->
+                            <div class="absolute w-full flex items-center justify-center px-4" x-show="slides > 1">
+                                <template x-for="index in slides" :key="index">
+                                    <button
+                                        class="flex-1 w-4 h-2 mt-4 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:bg-[#E26B81] hover:shadow-lg"
+                                        :class="{
                                         'bg-[#E26B81]': activeSlide === index,
                                         'bg-zinc-500': activeSlide !== index 
                                     }" x-on:click="activeSlide = index">
-                                </button>
-                            </template>
+                                    </button>
+                                </template>
+                            </div>
                         </div>
                     </div>
                 </div>

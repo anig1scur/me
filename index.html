@@ -14,11 +14,11 @@
 
 <body>
     <div class="h-dvh tracking-wide min-h-dvh flex justify-center">
-        <div class="max-w-2xl sm:text-lg text-md overflow-x-hidden p-6 lg:px-2 w-screen">
+        <div class="max-w-3xl sm:text-lg text-md overflow-x-hidden p-6 lg:px-2 w-screen">
             <div id="app"></div>
             <div x-data="router()">
                 <template x-route="/">
-                    <div>
+                    <div class="max-w-2xl m-auto">
                         <div class="flex items-center mb-6 gap-2 sm:gap-4 sm:mt-4 lg:mt-8">
                             <h1 class="text-4xl sm:text-5xl font-bold whitespace-nowrap">Hi, I am
                             </h1>
@@ -99,8 +99,10 @@
             return {
                 projects: [
                     {
+                        id: "no-pcr",
                         title: "No PCR Challenge",
                         created: "2022/10",
+                        assetsAspect: "1/2",
                         url: "###",
                         techstacks: ["React.js", "Tailwind CSS"],
                         description: `It was born during a hackathon in the fall of 2022. It's a game where players decide whether they need a PCR test based on the number of days since their last test and their travel requirements.
@@ -109,7 +111,22 @@
 
                         The repository is humorously titled "Have you done nuclear acid today?" originally reflecting a playful take on the term "核酸"
                         `,
-                        assets: ["./assets/projects/no-pcr.png", "./assets/projects/no-pcr-2.png", "./assets/projects/no-pcr.mp4"]
+                        assets: ["./assets/projects/no-pcr-2.png", "./assets/projects/no-pcr.png", "./assets/projects/no-pcr.mp4"]
+                    },
+                    {
+                        id: "jouer",
+                        title: "Jouer",
+                        created: "2024/10",
+                        url: "https://github.com/anig1scur/jouer",
+                        techstacks: ["Colyseus.js", "PIXI.js"],
+                        description: `"Jouer", which comes from the French word for "play" originated from a board game called "Scout" that some friends and I played.
+
+                        It's a simple yet fun game for 2-5 players. Interestingly, just as I was nearly done finishing the game project, I lost interest in it, lol. This is actually my first attempt at creating a game application, and I found the experience really fun.
+
+                        For this project, I used Colyseus to manage the room-related logic, which made handling multiplayer sessions much easier. I handled the design myself, though I'm not fully satisfied with some of the details yet. Wish I could continue refining it until it's exactly how I want it.
+                        `,
+                        assetsAspect: "3/2",
+                        assets: ["./assets/projects/jouer.png", "./assets/projects/jouer2.png"]
                     }
                 ]
             }
@@ -130,7 +147,7 @@
                         }
                     },
                     animation: {
-                        wiggle: 'wiggle 1s ease-in-out infinite',
+                        wiggle: 'wiggle 1s ease-in-out',
                         fadeUp: 'fadeUp 0.4s ease-in'
                     },
                     backgroundImage: {
