@@ -23,10 +23,12 @@
                         </template>
                     </div>
                 </div>
-                <div class="flex flex-col md:flex-row gap-5 items-center">
+                <!-- pcLayout: "col", -->
+
+                <div class="flex flex-col md:flex-row gap-5 items-center" :class="project.pcLayout === 'col' ? 'md:flex-col' : ''">
                     <div x-data="{
                     isExpanded: false,
-                    maxLength: 240,
+                    maxLength: 250,
                     isMobile: window.innerWidth <= 640,
                     get truncatedDescription() {
                         return this.isMobile && project.description.length > this.maxLength && !this.isExpanded
@@ -44,7 +46,7 @@
                             @click="isExpanded = !isExpanded" class="text-[#E26B81] hover:text-[#c55b6e] text-sm"
                             x-text="isExpanded ? '↥less' : '↧more'"></button>
                     </div>
-                    <div class="md:w-1/2 md:-mt-28">
+                    <div class="md:w-1/2 md:-mt-28" :class="project.pcLayout === 'col' ? 'md:w-full md:mt-2' : ''">
                         <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id"
                             x-data="{ activeSlide: 1, slides: project.assets.length }">
                             <!-- Slides -->
