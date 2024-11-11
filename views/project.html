@@ -1,4 +1,4 @@
-<div x-data="initProjects()" class="font-pixel">
+<div x-data="initProjects()" class="font-pixel max-w-3xl sm:text-lg text-md p-6 lg:px-2 w-screen">
     <div class="flex items-center gap-3 font-pixel lg:mt-10">
         <div class="p-2 bg-[#E26B81] w-fit text-white">SELECTED</div>
         <div class="text-2xl text-[#E26B81]">WORK</div>
@@ -6,7 +6,8 @@
     <div class="mt-4 md:mt-8 flex flex-col gap-16 md:gap-24 pb-8">
         <template x-for="project in projects" :key="project.id">
             <div>
-                <div class="md:inline-block lg:leading-7 md:leading-6 leading-[1.54] sticky top-2 z-10 bg-[#FFE1E7] bg-opacity-30 backdrop-blur-sm py-2">
+                <div
+                    class="md:inline-block lg:leading-7 md:leading-6 leading-[1.54] sticky md:top-8 top-0 z-10 bg-[#FFE1E7] bg-opacity-30 backdrop-blur-sm py-2">
                     <a x-text="project.title" :href="project.url" target="_blank"
                         class="text-4xl mb-2 md:gap-4 md:text-5xl font-bold block"></a>
                     <div>
@@ -23,9 +24,9 @@
                         </template>
                     </div>
                 </div>
-                <!-- pcLayout: "col", -->
 
-                <div class="flex flex-col md:flex-row gap-5 items-center" :class="project.pcLayout === 'col' ? 'md:flex-col' : ''">
+                <div class="flex flex-col md:flex-row gap-5 items-center"
+                    :class="project.pcLayout === 'col' ? 'md:flex-col' : ''">
                     <div x-data="{
                     isExpanded: false,
                     maxLength: 250,
