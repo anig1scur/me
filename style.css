@@ -15,6 +15,21 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'fingerpaint';
+  src: url('./assets/fonts/FingerPaint-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'outfit';
+  src: url('./assets/fonts/Outfit-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 @layer base {
   a {
     @apply underline underline-offset-2;
@@ -32,7 +47,7 @@
 
   body.adventure {
     background-color: #F9E4B7;
-    color: #E9B44C;
+    color: #654F20;
   }
 
   body.painting {
