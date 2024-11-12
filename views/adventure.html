@@ -1,11 +1,20 @@
 <div x-data="initProjects()" class="max-w-3xl sm:text-lg text-md p-4 lg:px-2 md:mt-10 w-screen m-auto">
-    <div class="flex flex-col items-center gap-4 md:gap-8">
+    <div x-data="{
+        isMobile: window.innerWidth <= 640,
+    }" class="flex flex-col items-center gap-4 md:gap-8">
         <h1 class="font-fingerpaint text-3xl md:text-5xl">
             ADVENTURE
         </h1>
-        <div class="text-center flex flex-col text-sm gap-2 w-[90%] mb-4">
-            <p>Everybody has an explicit or implicit dream of touring the world, right?</p>
-            <p>I like to call each of my travels or hikes an adventure, and I record some of these experiences here.</p>
+        <div class="flex flex-col md:flex-row text-sm md:text-lg items-end md:gap-2 mb-2">
+            <div class="flex flex-col gap-3">
+                <p
+                    class="before:bg-quote mb-3 before:inline-block before:w-4 before:h-4 before:bg-no-repeat before:bg-center before:bg-contain">
+                    The purpose of life is to live it, to taste experience to the utmost, to reach out eagerly and
+                    without fear for
+                    newer and richer experience. </p>
+            <img x-show="!isMobile" loading="eager" src="../assets/adventures/index-pc.jpg" class="w-full shadow-md rounded-lg h-auto" />
+            </div>
+            <img loading="eager" src="../assets/adventures/index.jpg" class="w-full md:w-[40%] shadow-md rounded-lg h-auto" />
         </div>
         <div class="md:mt-4 mt-1 flex flex-col gap-6" x-data="initAdventures()">
             <template x-for="adventure in adventures" :key="adventure.id">
@@ -36,9 +45,9 @@
                         x-html="adventure.description.split('\n\n').map(p => `<div>${p.trim()}</div>`).join('')">
                     </div>
                     <div class="flex overflow-x-auto gap-2">
-                    <template x-for="(img, index) in adventure.imgs" :key="index">
-                        <img :src="img" class="w-[88%] md:w-[75%] shadow-md rounded-lg h-auto mt-4 inline-block" />
-                    </template>
+                        <template x-for="(img, index) in adventure.imgs" :key="index">
+                        <img :src="img" loading="lazy" class="w-[88%] md:w-[75%] object-cover shadow-md rounded-lg h-auto mt-4 inline-block" />
+                        </template>
                     </div>
                 </div>
             </template>

@@ -62,7 +62,7 @@
                                     </template>
                                     <template x-if="!asset.endsWith('.mp4')">
                                         <div class="relative w-full" :class="'aspect-[' + project.assetsAspect + ']'">
-                                            <img :src="asset" :alt="asset.split('/').pop().split('.')[0]"
+                                            <img loading="lazy" :src="asset" :alt="asset.split('/').pop().split('.')[0]"
                                                 class="w-full h-full object-contain md:absolute">
                                         </div>
                                     </template>
