@@ -12,10 +12,17 @@
                     The purpose of life is to live it, to taste experience to the utmost, to reach out eagerly and
                     without fear for
                     newer and richer experience. </p>
-            <img x-show="!isMobile" loading="eager" src="../assets/adventures/index-pc.jpg" class="w-full shadow-md rounded-lg h-auto" />
+                <img x-show="!isMobile" loading="eager" src="../assets/adventures/index-pc.jpg"
+                    class="w-full shadow-md rounded-lg h-auto" />
             </div>
-            <img loading="eager" src="../assets/adventures/index.jpg" class="w-full md:w-[40%] shadow-md rounded-lg h-auto" />
+            <img loading="eager" src="../assets/adventures/index.jpg"
+                class="w-full md:w-[40%] shadow-md rounded-lg h-auto" />
         </div>
+
+        <div class="text-sm md:text-lg">
+            Since I began working, I've finally had both the time and resources to broaden my experiences. Personally, I like to call each of my travels or hikes an "adventure", and I've recorded some of these experiences here. I wouldn't say I'm naturally adventurous, but I aspire to be.
+        </div>
+
         <div class="md:mt-4 mt-1 flex flex-col gap-6" x-data="initAdventures()">
             <template x-for="adventure in adventures" :key="adventure.id">
                 <div class="bg-[#FFF5DF] p-4 rounded-lg shadow-md">
@@ -44,9 +51,10 @@
                     <div class="text-sm flex flex-col gap-3 leading-[1.6]"
                         x-html="adventure.description.split('\n\n').map(p => `<div>${p.trim()}</div>`).join('')">
                     </div>
-                    <div class="flex overflow-x-auto gap-2">
+                    <div class="flex overflow-x-auto gap-2 snap-x">
                         <template x-for="(img, index) in adventure.imgs" :key="index">
-                        <img :src="img" loading="lazy" class="w-[88%] md:w-[75%] object-cover shadow-md rounded-lg h-auto mt-4 inline-block" />
+                            <img :src="img" loading="lazy"
+                                class="snap-center w-[88%] md:w-[75%] object-cover shadow-md rounded-lg h-auto mt-4 inline-block" />
                         </template>
                     </div>
                 </div>
