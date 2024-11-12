@@ -14,61 +14,59 @@
 
 <body>
     <div class="h-dvh tracking-wide min-h-dvh flex justify-center">
-            <div id="app"></div>
-            <div x-data="router()">
-                <template x-route="/">
-                    <div class="max-w-2xl sm:text-lg text-md p-6 lg:px-2 w-screen m-auto">
-                        <div class="flex items-center mb-6 gap-2 sm:gap-4 sm:mt-4 lg:mt-8">
-                            <h1 class="text-4xl sm:text-5xl font-bold whitespace-nowrap">Hi, I am
-                            </h1>
-                            <div class="inline-block bg-eunice w-56 h-20 sm:w-64 bg-center bg-no-repeat bg-contain">
-                            </div>
+        <div id="app"></div>
+        <div x-data="router()">
+            <template x-route="/">
+                <div class="max-w-2xl sm:text-lg text-md p-6 lg:px-2 w-screen m-auto">
+                    <div class="flex items-center mb-6 gap-2 sm:gap-4 sm:mt-4 lg:mt-8">
+                        <h1 class="text-4xl sm:text-5xl font-bold whitespace-nowrap">Hi, I am
+                        </h1>
+                        <div class="inline-block bg-eunice w-56 h-20 sm:w-64 bg-center bg-no-repeat bg-contain">
                         </div>
-                        <div class="flex items-center gap-4 mb-4">
-                            <p class="flex-[100%] lg:leading-8 sm:leading-7 leading-[1.5]">
-                                I used to be a Front End Engineer. Now I'm on my way to becoming an indie developer :D
-                            </p>
-                            <div
-                                class="inline-block sm:mr-12 bg-avatar sm:min-w-28 sm:min-h-28 min-w-24 min-h-24 bg-center bg-no-repeat bg-contain">
-                            </div>
-                        </div>
-                        <p class="lg:leading-8 sm:leading-7 leading-[1.5]">
-                            I'm interested in creating designs that blend aesthetics with practicality, benefiting users
-                            in
-                            meaningful
-                            ways.
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <p class="flex-[100%] lg:leading-8 sm:leading-7 leading-[1.5]">
+                            I used to be a Front End Engineer. Now I'm on my way to becoming an indie developer :D
                         </p>
-
-                        <div class="sm:mt-16 2xl:mt-24 mt-6">
-                            <a href="/project"
-                                class="hover:animate-wiggle animate-fadeUp block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
-                            </a>
-                            <a href="/adventure"
-                                class="hover:animate-wiggle animate-[fadeUp_0.5s_ease-in] inline-block bg-travel mb-4 w-60 h-16 bg-left bg-no-repeat bg-contain">
-                            </a>
-                            <div class="flex items-center gap-2">
-                                <a href="/painting"
-                                    class="hover:animate-wiggle animate-[fadeUp_0.7s_ease-in] w-[70%] h-24 bg-paint bg-center bg-no-repeat bg-contain">
-                                </a>
-                                <a target="_blank" href="https://memo.piggy.lol/"
-                                    class="hover:animate-wiggle animate-[fadeUp_0.9s_ease-in] w-[30%] h-28 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
-                                </a>
-                            </div>
+                        <div
+                            class="inline-block sm:mr-12 bg-avatar sm:min-w-28 sm:min-h-28 min-w-24 min-h-24 bg-center bg-no-repeat bg-contain">
                         </div>
                     </div>
-                </template>
-                <template x-route="/project" x-template.preload="/views/project.html"
-                    x-handler="updateRoute"></template>
-                <template x-route="/adventure" x-template.preload="/views/adventure.html"
-                    x-handler="updateRoute"></template>
-                <template x-route="/painting" x-template.preload="/views/painting.html"
-                    x-handler="updateRoute"></template>
-                <template x-route="notfound">
-                    <div>
-                        <h1>Page Not Found</h1>
+                    <p class="lg:leading-8 sm:leading-7 leading-[1.5]">
+                        I'm interested in creating designs that blend aesthetics with practicality, benefiting users
+                        in
+                        meaningful
+                        ways.
+                    </p>
+
+                    <div class="sm:mt-16 2xl:mt-24 mt-6">
+                        <a href="/project"
+                            class="hover:animate-wiggle animate-fadeUp block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
+                        </a>
+                        <a href="/adventure"
+                            class="hover:animate-wiggle animate-[fadeUp_0.5s_ease-in] inline-block bg-travel mb-4 w-60 h-16 bg-left bg-no-repeat bg-contain">
+                        </a>
+                        <div class="flex items-center gap-2">
+                            <a href="/painting"
+                                class="hover:animate-wiggle animate-[fadeUp_0.7s_ease-in] w-[70%] h-24 bg-paint bg-center bg-no-repeat bg-contain">
+                            </a>
+                            <a target="_blank" href="https://memo.piggy.lol/"
+                                class="hover:animate-wiggle animate-[fadeUp_0.9s_ease-in] w-[30%] h-28 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
+                            </a>
+                        </div>
                     </div>
-                </template>
-            </div>
+                </div>
+            </template>
+            <template x-route="/project" x-template.preload="/views/project.html" x-handler="updateRoute"></template>
+            <template x-route="/adventure" x-template.preload="/views/adventure.html"
+                x-handler="updateRoute"></template>
+            <template x-route="/painting" x-template.preload="/views/painting.html" x-handler="updateRoute"></template>
+            <template x-route="notfound">
+                <div>
+                    <h1>Page Not Found</h1>
+                </div>
+            </template>
+        </div>
     </div>
 
     <script>
@@ -162,6 +160,31 @@
                         assets: ["./assets/projects/fcitx5.png"],
 
 
+                    }
+                ]
+            }
+        }
+        function initAdventures () {
+            return {
+                adventures: [
+                    {
+                        id: "yubeng-2023",
+                        title: "Yubeng, China ⛰️",
+                        url: "https://www.alltrails.com/china/yunnan/yubeng",
+                        altitude: {
+                            avg: 3700,
+                            max: 4500
+                        },
+                        period: {
+                            start: "2022.12.31",
+                            end: "2023.01.06"
+                        },
+                        description: `In the winter of 2022, although I hadn't fully recovered from the Covid that I caught two weeks prior, I enthusiastically accepted my buddies' invitation to hike in Yubeng.
+
+                Thanks to my buddies' planning, I didn't need to do any preparation or research about this place. However, it turned out to be an incredible first multi-day trekking experience for me.
+
+                My favorite part of the trip was hiking the Chongcao route. Under clear skies, I was deeply moved by the surrounding snow-capped mountains. Even now, I can still recall the crisp, cold air at the mountain peak.`,
+                        imgs: ["./assets/adventures/yubeng/1.jpg", "./assets/adventures/yubeng/2.jpg", "./assets/adventures/yubeng/3.jpg", "./assets/adventures/yubeng/4.jpg", "./assets/adventures/yubeng/5.jpg", "./assets/adventures/yubeng/6.jpg"]
                     }
                 ]
             }
