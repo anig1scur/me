@@ -18,40 +18,43 @@
         <div x-data="router()">
             <template x-route="/" x-handler="updateRoute">
                 <div class="max-w-2xl sm:text-lg text-md p-6 lg:px-2 w-screen m-auto">
-                    <div class="flex items-center mb-6 gap-2 sm:gap-4 sm:mt-4 lg:mt-8">
-                        <h1 class="text-4xl sm:text-5xl font-bold whitespace-nowrap">Hi, I am
+                    <div class="flex items-center mb-4 gap-2 sm:gap-4 sm:mt-4 sm:mb-8 lg:mt-8">
+                        <h1 class="text-4xl sm:text-6xl font-bold whitespace-nowrap">Hi, I am
                         </h1>
-                        <div class="inline-block bg-eunice w-56 h-20 sm:w-64 bg-center bg-no-repeat bg-contain">
+                        <div class="inline-block bg-eunice w-64 h-24 sm:w-64 bg-center bg-no-repeat bg-contain">
                         </div>
                     </div>
-                    <div class="flex items-center gap-4 mb-4">
-                        <p class="flex-[100%] lg:leading-8 sm:leading-7 leading-[1.5]">
-                            I used to be a Front End Engineer based on Beijing. Now I'm on way to becoming an indie
-                            developer :D
-                        </p>
-                        <div
-                            class="inline-block sm:mr-12 bg-avatar sm:min-w-28 sm:min-h-28 min-w-24 min-h-24 bg-center bg-no-repeat bg-contain">
+                    <div class="flex items-start gap-4 mb-4 flex-col-reverse sm:flex-row">
+                        <div class="flex flex-col gap-4 lg:leading-8 sm:leading-7 leading-[1.5]">
+                            <p class="flex-[100%] ">
+                                After graduating from the Communication University of China, I began my career as a front-end engineer in Beijing.
+                            </p>
+                            <p>
+                                I'm passionate about crafting designs that combine beauty and function, creating meaningful experiences for users. Beyond work, I'm interested in music making, 3D modeling, and pixel painting. I'm also an avid hiker and traveler.
+
+                            </p>
+                        </div>
+                        <div class="w-full sm:min-w-[40%] sm:w-[40%] sm:mt-2 flex items-center flex-col gap-2">
+                            <img src="./assets/me_at_rinjani.jpg" alt="me at rinjani" class="shadow-sm border-4 border-[#3F4F26] border-opacity-60 rounded-3xl w-full">
+                            <div class="italic text-xs opacity-80">
+                            me at Rinjani summit in 2024 Nov
                         </div>
                     </div>
-                    <p class="lg:leading-8 sm:leading-7 leading-[1.5]">
-                        My goal is creating designs that blend aesthetics with practicality, benefiting users in
-                        meaningful ways. Besides that, I'm interested in music making, 3d modeling, and pixel painting.
-                        I'm also a fan of hiking and traveling.
-                    </p>
+                    </div>
 
                     <div class="sm:mt-16 2xl:mt-24 mt-6">
                         <a href="/project"
-                            class="hover:animate-wiggle animate-fadeUp block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
+                            class="animate-fadeUp block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
                         </a>
                         <a href="/adventure"
-                            class="hover:animate-wiggle animate-[fadeUp_0.5s_ease-in] inline-block bg-travel mb-4 w-60 h-16 bg-left bg-no-repeat bg-contain">
+                            class="animate-[fadeUp_0.5s_ease-in] inline-block bg-travel mb-4 w-60 h-16 bg-left bg-no-repeat bg-contain">
                         </a>
                         <div class="flex items-center gap-2">
                             <a href="/painting"
-                                class="hover:animate-wiggle animate-[fadeUp_0.7s_ease-in] w-[70%] h-24 bg-paint bg-center bg-no-repeat bg-contain">
+                                class="animate-[fadeUp_0.7s_ease-in] w-[70%] h-24 bg-paint bg-center bg-no-repeat bg-contain">
                             </a>
                             <a target="_blank" href="https://memo.piggy.lol/"
-                                class="hover:animate-wiggle animate-[fadeUp_0.9s_ease-in] w-[30%] h-28 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
+                                class="animate-[fadeUp_0.9s_ease-in] w-[30%] h-28 -ml-5 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
                             </a>
                         </div>
                     </div>
@@ -269,7 +272,7 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         project: "url('./assets/project.svg')",
                         travel: "url('./assets/travel.svg')",
                         memo: "url('./assets/memo.svg')",
-                        avatar: "url('./assets/eunice_avatar.png')",
+                        avatar: "url('./assets/me_at_rinjani.jpg')",
                     },
                     fontFamily: {
                         'pixel': ['pixel', 'sans-serif'],
