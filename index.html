@@ -17,14 +17,14 @@
         <div id="app"></div>
         <div x-data="router()">
             <template x-route="/" x-handler="updateRoute">
-                <div class="max-w-2xl sm:text-lg text-md p-6 lg:px-2 w-screen m-auto">
-                    <div class="flex items-center mb-4 gap-2 sm:gap-4 sm:mt-4 sm:mb-8 lg:mt-8">
-                        <h1 class="text-4xl sm:text-6xl font-bold whitespace-nowrap">Hi, I am
+                <div class="max-w-2xl sm:text-xl text-lg py-2 px-6 sm:py-6 lg:px-2 w-screen m-auto">
+                    <div class="flex items-center mb-3 gap-2 sm:gap-6 sm:mt-4 sm:mb-8 lg:mt-8">
+                        <h1 class="font-futura text-4xl sm:text-5xl md:text-6xl font-bold whitespace-nowrap">Hi, I am
                         </h1>
-                        <div class="inline-block bg-eunice w-64 h-24 sm:w-64 bg-center bg-no-repeat bg-contain">
+                        <div class="inline-block bg-eunice w-64 h-24 sm:w-64 md:w-72 bg-center bg-no-repeat bg-contain">
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 mb-4 flex-col-reverse sm:flex-row">
+                    <div class="font-FTLC tracking-wide flex items-start gap-6 mb-2 flex-col-reverse sm:flex-row">
                         <div class="flex flex-col gap-4 lg:leading-8 sm:leading-7 leading-[1.5]">
                             <p class="flex-[100%] ">
                                 After graduating from the Communication University of China, I began my career as a front-end engineer in Beijing.
@@ -34,8 +34,8 @@
 
                             </p>
                         </div>
-                        <div class="w-full sm:min-w-[40%] sm:w-[40%] sm:mt-2 flex items-center flex-col gap-2">
-                            <img src="./assets/me_at_rinjani.jpg" alt="me at rinjani" class="shadow-sm border-4 border-[#3F4F26] border-opacity-60 rounded-3xl w-full">
+                        <div class="w-full sm:min-w-[40%] sm:w-[40%] sm:mt-2 flex items-center flex-col gap-2 h-full">
+                            <img src="./assets/me_at_rinjani.png" alt="me at rinjani" class="w-full h-auto">
                             <div class="italic text-xs opacity-80">
                             me at Rinjani summit in 2024 Nov
                         </div>
@@ -276,8 +276,9 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                     },
                     fontFamily: {
                         'pixel': ['pixel', 'sans-serif'],
-                        'outfit': ['outfit', 'sans-serif'],
                         'fingerpaint': ['fingerpaint', 'sans-serif'],
+                        'FTLC': [ 'FTLC', 'sans-serif'],
+                        'futura': ['futura', 'sans-serif'],
                     }
                 }
             }

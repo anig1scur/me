@@ -23,12 +23,11 @@
 }
 
 @font-face {
-  font-family: 'outfit';
-  src: url('./assets/fonts/Outfit-Light.ttf');
+  font-family: 'FTLC';
+  src: url('./assets/fonts/FTLC.ttf');
   font-weight: normal;
   font-style: normal;
 }
-
 
 @layer base {
   a {
