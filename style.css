@@ -55,7 +55,40 @@
   }
 }
 
-@layer components {}
+@layer components {
+  .modules {
+    position: relative;
+    min-height: fit-content;
+}
+
+.modules a {
+    transform: translate(var(--x), var(--y)) scale(0.75);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modules a[href="/project"] {
+  --x: -10%;
+  --y: 10%;
+}
+
+.modules a[href="/adventure"] {
+  --x: 20%;
+  --y: -40%;
+}
+
+.modules a[href="/painting"] {
+  --x: -20%;
+  --y: -40%;
+}
+
+.modules a[href="https://memo.piggy.lol/"] {
+  --x: -30%;
+  --y: -80%;
+}
+.modules.visible a {
+    transform: translate(0, 0) scale(1);
+  }
+}
 
 @layer utilities {
   .text-shadow {
