@@ -1,14 +1,14 @@
-<div x-data="initProjects()" class="max-w-3xl sm:text-lg text-md p-4 lg:px-2 md:mt-10 w-screen m-auto">
+<div x-data="initData()" class="font-FTLC max-w-3xl sm:text-lg text-lg p-4 lg:px-2 md:mt-10 w-screen m-auto">
     <div x-data="{
         isMobile: window.innerWidth <= 640,
-    }" class="flex flex-col items-center gap-4 md:gap-8">
+    }" class="flex flex-col items-center gap-4 md:gap-8 mb-10">
         <div class="flex justify-between w-full items-center mb-1">
             <h1 x-data class="font-fingerpaint text-3xl md:text-5xl">
                 ADVENTURE
             </h1>
             <a x-data="homeIcon" href="/" class="w-8 h-8 inline-block"></a>
         </div>
-        <div class="flex flex-col md:flex-row text-sm md:text-lg items-end md:gap-2 mb-2">
+        <div class="flex flex-col md:flex-row text-md md:text-lg items-end md:gap-2 mb-2">
             <div class="flex flex-col gap-3">
                 <p
                     class="before:bg-quote mb-3 before:inline-block before:w-4 before:h-4 before:bg-no-repeat before:bg-center before:bg-contain">
@@ -22,7 +22,7 @@
                 class="w-full md:w-[40%] shadow-md rounded-lg h-auto" />
         </div>
 
-        <div class="text-sm md:text-lg">
+        <div class="text-md md:text-lg">
             Since I began working, I've finally had both the time and resources to broaden my experiences. Personally, I
             like to call each of my travels or hikes an "adventure", and I've recorded some of these experiences here. I
             wouldn't say I'm naturally adventurous, but I aspire to be.
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-sm flex flex-col gap-3 leading-[1.6]"
+                    <div class="text-md md:text-lg flex flex-col gap-3 leading-[1.6]"
                         x-html="adventure.description.split('\n\n').map(p => `<div>${p.trim()}</div>`).join('')">
                     </div>
                     <div class="flex overflow-x-auto gap-2 snap-x snap-mandatory">
