@@ -49,9 +49,14 @@
     color: #654F20;
   }
 
-  body.painting {
+  body.design {
     background-color: #D6EAF8;
     color: #3498DB;
+  }
+
+  body.things-i-love {
+    background-color: #e7dbf2;
+    color: #472c5a;
   }
 }
 
@@ -76,9 +81,14 @@
   --y: -40%;
 }
 
-.modules a[href="/painting"] {
+.modules a[href="/design"] {
   --x: -20%;
   --y: -40%;
+}
+
+.modules a[href="/things-i-love"] {
+  --x: -100%;
+  --y: 20%;
 }
 
 .modules a[href="https://memo.piggy.lol/"] {

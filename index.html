@@ -30,7 +30,7 @@
                                 After graduating from the Communication University of China, I began my career as a front-end engineer in Beijing. And now I'm pursuing my master education in Chicago.
                             </p>
                             <p>
-                                I'm passionate about crafting designs that combine beauty and function, creating meaningful experiences for users. Beyond work, I'm interested in music making, 3D modeling, and pixel painting. I'm also an avid hiker and traveler.
+                                I'm passionate about crafting designs that combine beauty and function, creating meaningful experiences for users. Beyond work, I'm interested in music making, 3D modeling, and pixel design. I'm also an avid hiker and traveler.
 
                             </p>
                         </div>
@@ -42,19 +42,22 @@
                     </div>
                     </div>
 
-                    <div class="modules sm:mt-16 2xl:mt-24 mt-6">
+                    <div class="modules sm:mt-16 2xl:mt-24 mt-6 mb-10">
                         <a href="/project"
-                            class="animate-fadeUp block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
+                            class="block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
                         </a>
                         <a href="/adventure"
-                            class="animate-[fadeUp_0.5s_ease-in] inline-block bg-travel mb-4 w-60 h-16 bg-left bg-no-repeat bg-contain">
+                            class="inline-block bg-travel mb-4 w-48 h-16 bg-left bg-no-repeat bg-contain">
                         </a>
                         <div class="flex items-center gap-2">
-                            <a href="/painting"
-                                class="animate-[fadeUp_0.7s_ease-in] w-[70%] h-24 bg-paint bg-center bg-no-repeat bg-contain">
+                            <a href="/design"
+                                class="w-[38%] h-24 bg-design bg-center bg-no-repeat bg-contain">
                             </a>
                             <a target="_blank" href="https://memo.piggy.lol/"
-                                class="animate-[fadeUp_0.9s_ease-in] w-[30%] h-28 -ml-5 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
+                                class="w-[28%] h-28 -ml-1 -mt-24 bg-memo bg-left bg-no-repeat bg-contain">
+                            </a>
+                            <a href="/things-i-love"
+                                class="w-[33%] h-24 bg-thingsilove bg-center bg-no-repeat bg-contain">
                             </a>
                         </div>
                     </div>
@@ -63,7 +66,8 @@
             <template x-route="/project" x-template.preload="/views/project.html" x-handler="updateRoute"></template>
             <template x-route="/adventure" x-template.preload="/views/adventure.html"
                 x-handler="updateRoute"></template>
-            <template x-route="/painting" x-template.preload="/views/painting.html" x-handler="updateRoute"></template>
+            <template x-route="/design" x-template.preload="/views/design.html" x-handler="updateRoute"></template>
+            <template x-route="/things-i-love" x-template.preload="/views/things-i-love.html" x-handler="updateRoute"></template>
             <template x-route="notfound">
                 <div>
                     <h1>Page Not Found</h1>
@@ -86,13 +90,16 @@
             return {
                 updateRoute (context) {
                     document.body.className = context.route.slice(1)
+                    window.scrollTo(0, 0);
                 }
             }
         }
 
         window.addEventListener('hashchange', () => {
-            document.body.className = window.location.hash.slice(2)
+            document.body.className = window.location.hash.slice(2);
+            window.scrollTo(0, 0);
         })
+
         document.addEventListener('alpine:init', () => {
             // does browserrouter work in Github Pages?
             window.PineconeRouter.settings.hash = true
@@ -110,6 +117,7 @@
     <script>
         function handleScroll() {
             const modules = document.querySelector('.modules');
+            if (!modules) return;
             const rect = modules.getBoundingClientRect();
 
             if (rect.top < window.innerHeight * 0.8) {
@@ -118,10 +126,9 @@
                 modules.classList.remove('visible');
             }
         }
-        // 添加scroll事件监听
         document.addEventListener('scroll', handleScroll);
-        // 页面加载时也执行一次检查
         window.addEventListener('load', handleScroll);
+
         </script>
     <script defer>
         function initProjects () {
@@ -270,21 +277,17 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         wiggle: {
                             '0%, 100%': { transform: 'rotate(-3deg)' },
                             '50%': { transform: 'rotate(8deg)' },
-                        },
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     },
                     animation: {
-                        wiggle: 'wiggle 1s ease-in-out',
-                        fadeUp: 'fadeUp 0.4s ease-in'
+                        wiggle: 'wiggle 1s ease-in-out'
                     },
                     backgroundImage: {
                         quote: "url('./assets/icons/quote.svg')",
                         adventureIdx: "url('./assets/adventures/index-pc.jpg')",
                         eunice: "url('./assets/eunice.png')",
-                        paint: "url('./assets/painting.svg')",
+                        design: "url('./assets/design.svg')",
+                        thingsilove: "url('./assets/thingsilove.svg')",
                         project: "url('./assets/project.svg')",
                         travel: "url('./assets/travel.svg')",
                         memo: "url('./assets/memo.svg')",
