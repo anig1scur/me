@@ -1,15 +1,11 @@
-<div x-data="initData()" class="max-w-3xl sm:text-lg text-md p-6 lg:px-2 w-screen">
+<div x-data="initDesigns()" class="max-w-3xl sm:text-lg text-md p-6 lg:px-2 w-screen">
     <div class="mb-10 md:mt-6">
-
         <div class="flex justify-between w-full items-center  mb-5">
-
             <h1 class="font-black text-2xl md:text-4xl">
                 DESIGN
             </h1>
             <a x-data="homeIcon" href="/" class="w-8 h-8 inline-block"></a>
         </div>
-
-
         <div class="font-serif break-all">
             <p>
                 I'm not a professional designer, but I truly enjoy doodling and working on some design projects. I once
@@ -27,9 +23,8 @@
     </div>
 
     <template x-for="design in designs" :key="design">
-        <div class="bg-blue-500 bg-opacity-5 mt-2 mb-10 p-4 rounded-lg ">
+        <div class="bg-blue-500 bg-opacity-5 mt-2 mb-10 p-4 rounded-lg transform translate-y-10" x-init="initGSAP($el)">
             <img :src="'assets/designs/' + design" class="w-full h-auto" />
         </div>
     </template>
-
 </div>
