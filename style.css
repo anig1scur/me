@@ -64,38 +64,39 @@
   .modules {
     position: relative;
     min-height: fit-content;
-}
+  }
 
-.modules a {
+  .modules a {
     transform: translate(var(--x), var(--y)) scale(0.75);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
+  }
 
-.modules a[href="/project"] {
-  --x: -10%;
-  --y: 10%;
-}
+  .modules a[href="/project"] {
+    --x: -10%;
+    --y: 10%;
+  }
 
-.modules a[href="/adventure"] {
-  --x: 20%;
-  --y: -40%;
-}
+  .modules a[href="/adventure"] {
+    --x: 20%;
+    --y: -40%;
+  }
 
-.modules a[href="/design"] {
-  --x: -20%;
-  --y: -40%;
-}
+  .modules a[href="/design"] {
+    --x: -20%;
+    --y: -40%;
+  }
 
-.modules a[href="/things-i-love"] {
-  --x: -100%;
-  --y: 20%;
-}
+  .modules a[href="/things-i-love"] {
+    --x: -100%;
+    --y: 20%;
+  }
 
-.modules a[href="https://memo.piggy.lol/"] {
-  --x: -30%;
-  --y: -80%;
-}
-.modules.visible a {
+  .modules a[href="https://memo.piggy.lol/"] {
+    --x: -30%;
+    --y: -80%;
+  }
+
+  .modules.visible a {
     transform: translate(0, 0) scale(1);
   }
 }

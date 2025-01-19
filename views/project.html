@@ -1,5 +1,5 @@
 <div x-data="initProjects()" class="font-pixel max-w-3xl sm:text-lg text-md p-6 lg:px-2 w-screen">
-    <div class="flex justify-between w-full items-center  lg:mt-10">
+    <div class="flex justify-between w-full items-center lg:mt-10">
         <div class="flex items-center gap-3 font-pixel">
             <div class="p-2 bg-[#E26B81] w-fit text-white">SELECTED</div>
             <div class="text-2xl text-[#E26B81]">WORK</div>
@@ -8,7 +8,7 @@
     </div>
 
     <div class="mt-4 md:mt-8 flex flex-col gap-16 md:gap-24 pb-8">
-        <template x-for="project in projects" :key="project.id">
+        <template x-for="(project, projectIndex) in projects" :key="project.id">
             <div>
                 <div
                     class="md:inline-block lg:leading-7 md:leading-6 leading-[1.54] sticky md:top-8 top-0 z-10 bg-[#FFE1E7] bg-opacity-30 backdrop-blur-sm py-2">
@@ -16,8 +16,7 @@
                         class="text-4xl mb-2 md:gap-4 md:text-5xl font-bold block"></a>
                     <div>
                         <template x-if="project.created">
-                            <p x-text="'Created on: ' + project.created" class="text-[#E26B81] text-sm mt-2 mb-1">
-                            </p>
+                            <p x-text="'Created on: ' + project.created" class="text-[#E26B81] text-sm mt-2 mb-1"></p>
                         </template>
 
                         <template x-if="project.techstacks && project.techstacks.length">
@@ -52,13 +51,20 @@
                             x-text="isExpanded ? '↥less' : '↧more'"></button>
                     </div>
                     <div class="md:w-1/2 md:-mt-28" :class="project.pcLayout === 'col' ? 'md:w-full md:mt-2' : ''">
-                        <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id"
-                            x-data="{ activeSlide: 1, slides: project.assets.length }">
+                        <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id" x-data="{ 
+                                activeSlide: 1, 
+                                slides: project.assets.length,
+                                getPreviousAssetsCount() {
+                                    return projects
+                                        .slice(0, projectIndex)
+                                        .reduce((sum, p) => sum + p.assets.length, 0);
+                                }
+                            }">
                             <template x-for="(asset, index) in project.assets" :key="index">
                                 <div x-show="activeSlide === index + 1" class="rounded-lg overflow-hidden">
                                     <template x-if="asset.endsWith('.mp4')">
                                         <video controls="false" preload autoplay muted loop playsinline
-                                            class="w-full h-full object-cover">
+                                            class="project-asset w-full h-full object-cover">
                                             <source :src="asset" type="video/mp4">
                                             Your browser does not support the video tag.
                                         </video>
@@ -66,7 +72,8 @@
                                     <template x-if="!asset.endsWith('.mp4')">
                                         <div class="relative w-full" :class="'aspect-[' + project.assetsAspect + ']'">
                                             <img loading="lazy" :src="asset" :alt="asset.split('/').pop().split('.')[0]"
-                                                class="w-full h-full object-contain md:absolute">
+                                                class="project-asset w-full h-full object-contain md:absolute transition-all transform opacity-0"
+                                                x-intersect="showImage(getPreviousAssetsCount() + index)">
                                         </div>
                                     </template>
                                 </div>
