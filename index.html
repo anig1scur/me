@@ -96,6 +96,9 @@
                 updateRoute (context) {
                     document.body.className = context.route.slice(1)
                     window.scrollTo(0, 0);
+                    setTimeout(() => {
+                        handleScroll();
+                    }, 50);
                 }
             }
         }
@@ -119,6 +122,7 @@
             }))
         })
     </script>
+
     <script>
         function handleScroll () {
             const modules = document.querySelector('.modules');
@@ -132,7 +136,7 @@
             }
         }
         document.addEventListener('scroll', handleScroll);
-        window.addEventListener('load', handleScroll);
+        window.addEventListener('pageshow', handleScroll);
 
     </script>
     <script defer>
