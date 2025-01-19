@@ -11,20 +11,34 @@
                 I'm not a professional designer, but I truly enjoy doodling and working on some design projects. I once
                 initiated a mutual learning program with the designer at my company, who is also a good friend of mine
                 - j. During that time, she taught me typography skills and basic aesthetics, while I taught her
-                HTML/CSS/JS.
+                HTML/CSS/JavaScript.
 
             </p>
             <p class="mt-3">
                 Here are some records of my journey so far.
                 I'm still dedicated to continuously creating my own projects because it genuinely brings me joy.
-
             </p>
         </div>
     </div>
 
     <template x-for="design in designs" :key="design">
-        <div class="bg-blue-500 bg-opacity-5 mt-2 mb-10 p-4 rounded-lg transform translate-y-10" x-init="initGSAP($el)">
-            <img :src="'assets/designs/' + design" class="w-full h-auto" />
+        <div>
+
+            <template
+                x-if=" design.endsWith('.png') || design.endsWith('.jpg') || design.endsWith('.jpeg') || design.endsWith('.gif')">
+                <div class="bg-blue-500 bg-opacity-5 mt-2 mb-10 p-4 rounded-lg transform translate-y-10"
+                    x-init="initGSAP($el)">
+                    <img :src="'assets/designs/' + design" class="w-full h-auto" />
+                </div>
+            </template>
+            <template
+                x-if="!(design.endsWith('.png') || design.endsWith('.jpg') || design.endsWith('.jpeg') || design.endsWith('.gif'))">
+
+                <div class="leading-[1.15] md:leading-[1.2] text-5xl md:text-7xl font-semibold text-white bg-[#3b5ac0] p-4 md:p-6"
+                    x-text="design"></div>
+            </template>
         </div>
-    </template>
+</div>
+</template>
+
 </div>

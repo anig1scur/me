@@ -215,11 +215,24 @@
 
             return {
                 designs: [
-                    "first_try.png", "poem.png", "second_try.png", "group.png", "sys.png", "jouer.png", "portfolio.png"
+                    "Firstly, I drew something on paper like toy handwriting and tried to use Figma prototyping it",
+                    "first_try.png",
+                    "This is the first integrated project under J's help, which is an app for clipping poem from pictures",
+                    "poem.png",
+                    "Then I spent some time on forum UI design, but all of them looked so unaesthetic :(",
+                    "second_try.png",
+                    "I like the left one in the below, which needs some trick to build it. I haven't made that so far",
+                    "group.png",
+                    "Also, I use this skill to draw some pictures in my daily work",
+                    "sys.png",
+                    "I practice design by doing an online board game",
+                    "jouer.png",
+                    "Now, I'm designing my portfolio step by step",
+                    "portfolio.png"
                 ],
                 initGSAP (el) {
-                    gsap.registerPlugin(ScrollTrigger);
 
+                    gsap.registerPlugin(ScrollTrigger);
                     gsap.from(el, {
                         opacity: 0,
                         y: 50,
@@ -232,8 +245,10 @@
                             // markers: true, // debug
                         }
                     });
+
                 },
             }
+
         }
 
         function initAdventures () {
