@@ -105,4 +105,19 @@
   .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
+  @keyframes svg-text-anim {
+    40% {
+       stroke-dashoffset: 0;
+       fill: transparent;
+     }
+     60% {
+       stroke-dashoffset: 0;
+       fill: #8e6e29;
+     }
+     100% {
+       stroke-dashoffset: 0;
+       fill: #654F20;
+     }
+
+ }
 }

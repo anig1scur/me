@@ -25,18 +25,16 @@
 
     <template x-for="design in designs" :key="design">
         <div>
-
             <template
                 x-if=" design.endsWith('.png') || design.endsWith('.jpg') || design.endsWith('.jpeg') || design.endsWith('.gif')">
-                <div class="bg-blue-500 bg-opacity-5 mt-2 mb-10 p-4 rounded-lg transform translate-y-10"
+                <div class="bg-blue-500 bg-opacity-5 mt-2 p-4 rounded-lg transform translate-y-10"
                     x-init="initGSAP($el)">
                     <img :src="'assets/designs/' + design" class="w-full h-auto" />
                 </div>
             </template>
             <template
                 x-if="!(design.endsWith('.png') || design.endsWith('.jpg') || design.endsWith('.jpeg') || design.endsWith('.gif'))">
-
-                <div class="leading-[1.3] md:leading-[1.4] text-[44px] md:text-7xl font-semibold text-white bg-[#3b5ac0] p-4 md:p-6"
+                <div class="mt-10 leading-[1.3] md:leading-[1.4] text-[44px] md:text-7xl font-semibold text-white bg-[#3b5ac0] p-4 md:p-6"
                     x-text="design"></div>
             </template>
         </div>
