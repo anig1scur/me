@@ -22,16 +22,16 @@
             <template x-route="/" x-handler="updateRoute">
                 <div class="max-w-2xl sm:text-xl text-lg py-2 px-6 sm:py-6 lg:px-2 w-screen m-auto">
                     <div class="flex items-center mb-3 gap-2 sm:gap-6 sm:mt-4 sm:mb-8 lg:mt-8">
-                        <h1 class="font-futura text-4xl sm:text-5xl md:text-6xl font-bold whitespace-nowrap">Hi, I am
+                        <h1 class="font-futura text-4xl md:text-5xl font-bold whitespace-nowrap">Hi, I am
                         </h1>
-                        <div class="inline-block bg-eunice w-64 h-24 sm:w-64 md:w-72 bg-center bg-no-repeat bg-contain">
+                        <div class="inline-block bg-eunice w-64 h-24 sm:w-64 md:w-80 bg-center bg-no-repeat bg-contain">
                         </div>
                     </div>
                     <div class="font-FTLC tracking-wide flex items-start gap-6 mb-2 flex-col-reverse sm:flex-row">
                         <div class="flex flex-col gap-4 lg:leading-8 sm:leading-7 leading-[1.5]">
                             <p class="flex-[100%] ">
                                 After graduating from the Communication University of China, I began my career as a
-                                front-end engineer in Beijing. And now I'm pursuing my master education in Chicago.
+                                front end engineer in Beijing. And now I'm pursuing my master degree in Chicago.
                             </p>
                             <p>
                                 I'm passionate about crafting designs that combine beauty and function, creating
@@ -42,9 +42,31 @@
                             </p>
                         </div>
                         <div class="w-full sm:min-w-[40%] sm:w-[40%] sm:mt-2 flex items-center flex-col gap-2 h-full">
-                            <img src="./assets/me_at_rinjani.png" alt="me at rinjani" class="w-full h-auto">
+                            <img src="./assets/me_at_rinjani.png" alt="me at rinjani"
+                                class="w-full h-auto aspect-square">
                             <div class="italic text-xs opacity-80">
                                 me at Rinjani summit in 2024 Nov
+                            </div>
+                            <div class="w-[75%] max-w-72 mt-2 md:mt-0 flex gap-3 items-center justify-between">
+                                <a href="https://github.com/anig1scur/" target="_blank"
+                                    class="bg-github hover:scale-110 transition-all w-9 h-9 md:w-7 md:h-8 bg-[50%] bg-contain bg-no-repeat">
+                                </a>
+                                <a href="https://www.linkedin.com/in/yanxin-zhu-9a4704330/" target="_blank"
+                                    class="bg-linkedin hover:scale-110 transition-all w-8 h-8 md:w-6 md:h-6 bg-contain bg-no-repeat">
+                                </a>
+                                <a href="mailto:anigiscur@gmail.com" target="_blank"
+                                    class="bg-mail hover:scale-110 transition-all w-8 h-8 md:w-6 md:h-6 bg-contain bg-[50%] bg-no-repeat">
+                                </a>
+                                <!-- <a href="https://www.douban.com/people/168117050/" target="_blank"
+                                    class="bg-douban w-6 h-6 md:w-5 md:h-5 bg-contain bg-[50%] bg-no-repeat">
+                                </a> -->
+                                <a href="https://www.douban.com/people/168117050/" target="_blank"
+                                    class="text-[24px] md:text-[19px] hover:scale-110 transition-all bg-[50%] bg-contain bg-no-repeat">
+                                    豆
+                                </a>
+                                <a href="https://steamcommunity.com/id/capricious_eunice/" target="_blank"
+                                    class="bg-steam hover:scale-110 transition-all w-8 h-8 md:w-6 md:h-6 bg-contain bg-no-repeat">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -52,9 +74,14 @@
                     <div class="modules sm:mt-16 2xl:mt-24 mt-6 mb-10">
                         <a href="/project" class="block mb-8 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
                         </a>
-                        <a href="/adventure"
-                            class="inline-block bg-travel mb-4 w-48 h-16 bg-left bg-no-repeat bg-contain">
-                        </a>
+                        <div class="flex items-center gap-2 justify-between">
+                            <a href="/adventure"
+                                class="inline-block bg-travel mb-4 w-48 h-16 bg-left bg-no-repeat bg-contain">
+                            </a>
+                            <a href="https://blog.piggy.lol/"
+                            class="block mb-8 bg-blog w-[50%] h-20 bg-no-repeat bg-contain">
+                            </a>
+                        </div>
                         <div class="flex items-center gap-2">
                             <a href="/design" class="w-[38%] h-24 bg-design bg-center bg-no-repeat bg-contain">
                             </a>
@@ -385,12 +412,19 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         wiggle: 'wiggle 1s ease-in-out'
                     },
                     backgroundImage: {
+                        asfalt: "url('./assets/icons/bright-squares.png')",
                         quote: "url('./assets/icons/quote.svg')",
+                        douban: "url('./assets/icons/douban.svg')",
+                        mail: "url('./assets/icons/mail.svg')",
+                        github: "url('./assets/icons/github.svg')",
+                        linkedin: "url('./assets/icons/linkedin.svg')",
+                        steam: "url('./assets/icons/steam.svg')",
                         adventureIdx: "url('./assets/adventures/index-pc.jpg')",
                         eunice: "url('./assets/eunice.png')",
                         design: "url('./assets/design.svg')",
                         thingsilove: "url('./assets/thingsilove.svg')",
                         project: "url('./assets/project.svg')",
+                        blog: "url('./assets/blog.svg')",
                         travel: "url('./assets/travel.svg')",
                         memo: "url('./assets/memo.svg')",
                         avatar: "url('./assets/me_at_rinjani.jpg')",

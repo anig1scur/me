@@ -91,6 +91,11 @@
     --y: 20%;
   }
 
+  .modules a[href="https://blog.piggy.lol/"] {
+    --x: -40%;
+    --y: 20%;
+  }
+
   .modules a[href="https://memo.piggy.lol/"] {
     --x: -30%;
     --y: -80%;
