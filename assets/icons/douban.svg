@@ -1,8 +1,8 @@
 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="1" y1="1.4" x2="24" y2="1.4" stroke="black" stroke-width="1.2"/>
-<path d="M0 24.5H13H26" stroke="black" stroke-width="1.2"/>
-<rect x="2.3" y="4.3" width="20.4" height="10.4" rx="2.7" stroke="black" stroke-width="0.6"/>
-<rect x="4.3" y="6.3" width="16.4" height="6.4" rx="1.7" stroke="black" stroke-width="0.6"/>
-<path d="M6.50008 18.2238C7.50011 18.7238 9.51243 20.5114 10 23" stroke="black" stroke-width="1.2"/>
-<path d="M19 16.5C18.9972 18.2166 17.3332 20.8037 15 23" stroke="black" stroke-width="1.2"/>
+<line x1="1" y1="1.4" x2="24" y2="1.4" stroke="#3F4F26" stroke-width="1.2"/>
+<path d="M0 24.5H13H26" stroke="#3F4F26" stroke-width="1.2"/>
+<rect x="2.35" y="4.35" width="20.3" height="10.3" rx="2.65" stroke="#3F4F26" stroke-width="0.7"/>
+<rect x="4.35" y="6.35" width="16.3" height="6.3" rx="1.65" stroke="#3F4F26" stroke-width="0.7"/>
+<path d="M6.50008 18.2238C7.50011 18.7238 9.51243 20.5114 10 23" stroke="#3F4F26" stroke-width="1.2"/>
+<path d="M20.9999 16.5C22 17 17.9999 24 15.5 23C13.839 21.3391 19.9999 16 20.9999 16.5Z" stroke="#3F4F26" stroke-width="0.7"/>
 </svg>

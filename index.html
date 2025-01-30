@@ -22,12 +22,12 @@
             <template x-route="/" x-handler="updateRoute">
                 <div class="max-w-2xl sm:text-xl text-lg py-2 px-6 sm:py-6 lg:px-2 w-screen m-auto">
                     <div class="flex items-center mb-3 gap-2 sm:gap-6 sm:mt-4 sm:mb-8 lg:mt-8">
-                        <h1 class="font-futura text-4xl md:text-5xl font-bold whitespace-nowrap">Hi, I am
+                        <h1 class="font-futura text-4xl sm:text-5xl font-bold whitespace-nowrap">Hi, I am
                         </h1>
-                        <div class="inline-block bg-eunice w-64 h-24 sm:w-64 md:w-80 bg-center bg-no-repeat bg-contain">
+                        <div class="inline-block bg-eunice w-64 h-24 sm:w-96 sm:h-32 bg-center bg-no-repeat bg-contain">
                         </div>
                     </div>
-                    <div class="font-FTLC tracking-wide flex items-start gap-6 mb-2 flex-col-reverse sm:flex-row">
+                    <div class="font-FTLC tracking-wide flex items-start gap-7 mb-2 flex-col-reverse sm:flex-row">
                         <div class="flex flex-col gap-4 lg:leading-8 sm:leading-7 leading-[1.5]">
                             <p class="flex-[100%] ">
                                 After graduating from the Communication University of China, I began my career as a
@@ -47,25 +47,25 @@
                             <div class="italic text-xs opacity-80">
                                 me at Rinjani summit in 2024 Nov
                             </div>
-                            <div class="w-[75%] max-w-72 mt-2 md:mt-0 flex gap-3 items-center justify-between">
+                            <div class="w-[75%] max-w-72 mt-2 sm:mt-0 flex gap-3 items-center justify-between">
                                 <a href="https://github.com/anig1scur/" target="_blank"
-                                    class="bg-github hover:scale-110 transition-all w-9 h-9 md:w-7 md:h-8 bg-[50%] bg-contain bg-no-repeat">
+                                    class="bg-github hover:scale-110 transition-all w-9 h-9 sm:w-7 sm:h-8 bg-[50%] bg-contain bg-no-repeat">
                                 </a>
                                 <a href="https://www.linkedin.com/in/yanxin-zhu-9a4704330/" target="_blank"
-                                    class="bg-linkedin hover:scale-110 transition-all w-8 h-8 md:w-6 md:h-6 bg-contain bg-no-repeat">
+                                    class="bg-linkedin hover:scale-110 transition-all w-8 h-8 sm:w-6 sm:h-6 bg-contain bg-no-repeat">
                                 </a>
                                 <a href="mailto:anigiscur@gmail.com" target="_blank"
-                                    class="bg-mail hover:scale-110 transition-all w-8 h-8 md:w-6 md:h-6 bg-contain bg-[50%] bg-no-repeat">
+                                    class="bg-mail hover:scale-110 transition-all w-8 h-8 sm:w-6 sm:h-6 bg-contain bg-[50%] bg-no-repeat">
                                 </a>
                                 <a href="https://www.douban.com/people/168117050/" target="_blank"
-                                    class="bg-douban hover:scale-110 w-6 h-6 md:w-5 md:h-5 bg-contain bg-[50%] bg-no-repeat">
+                                    class="bg-douban hover:scale-110 w-6 h-6 sm:w-5 sm:h-5 bg-contain bg-[50%] bg-no-repeat">
                                 </a>
                                 <!-- <a href="https://www.douban.com/people/168117050/" target="_blank"
                                     class="text-[24px] md:text-[19px] hover:scale-110 transition-all bg-[50%] bg-contain bg-no-repeat">
                                     豆
                                 </a> -->
                                 <a href="https://steamcommunity.com/id/capricious_eunice/" target="_blank"
-                                    class="bg-steam hover:scale-110 transition-all w-8 h-8 md:w-6 md:h-6 bg-contain bg-no-repeat">
+                                    class="bg-steam hover:scale-110 transition-all w-8 h-8 sm:w-6 sm:h-6 bg-contain bg-no-repeat">
                                 </a>
                             </div>
                         </div>
@@ -389,6 +389,7 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                 ]
             }
         }
+
         document.addEventListener("alpine:init", () => {
             Alpine.data("initDesigns", () => initDesigns());
 

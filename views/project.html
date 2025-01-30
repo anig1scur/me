@@ -14,15 +14,16 @@
                     class="md:inline-block lg:leading-7 md:leading-6 leading-[1.54] sticky md:top-8 top-0 z-10 bg-[#FFE1E7] bg-opacity-30 backdrop-blur-sm py-2">
                     <template x-if="project.url">
                         <a x-text="project.title" :href="project.url" target="_blank"
-                        class="text-4xl mb-2 md:gap-4 pr-8 md:text-5xl font-bold bg-external bg-[100%_56%] bg-no-repeat bg-[length:1.5rem]">
+                            class="text-4xl mb-2 md:gap-4 pr-8 md:text-5xl font-bold bg-external bg-[100%_56%] bg-no-repeat bg-[length:1.5rem]">
                         </a>
                     </template>
                     <template x-if="!project.url">
-                        <div x-text="project.title" class="text-4xl mb-2 md:gap-4 md:text-5xl font-bold" ></div>
+                        <div x-text="project.title" class="text-4xl mb-2 md:gap-4 md:text-5xl font-bold"></div>
                     </template>
-                <template x-if="project.github">
-                    <a :href="project.github" target="_blank">
-                            <i class="ml-2 bg-github2 bg-contain inline-block translate-y-[2px] md:translate-y-0 w-6 h-6 bg-no-repeat"></i>
+                    <template x-if="project.github">
+                        <a :href="project.github" target="_blank">
+                            <i
+                                class="ml-2 bg-github2 bg-contain inline-block translate-y-[2px] md:translate-y-0 w-6 h-6 bg-no-repeat"></i>
                         </a>
                     </template>
                     <div>
