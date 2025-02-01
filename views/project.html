@@ -64,7 +64,7 @@
                     </div>
                     <div class="md:w-1/2 md:-mt-28" :class="project.pcLayout === 'col' ? 'md:w-full md:mt-2' : ''">
                         <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id" x-data="{ 
-                                activeSlide: 1, 
+                                activeSlide: 1,
                                 slides: project.assets.length,
                                 getPreviousAssetsCount() {
                                     return projects
@@ -76,16 +76,20 @@
                                 <div x-show="activeSlide === index + 1" class="rounded-lg overflow-hidden">
                                     <template x-if="asset.endsWith('.mp4')">
                                         <video controls="false" preload autoplay muted loop playsinline
-                                            class="project-asset w-full h-full object-cover">
+                                            class="w-full h-full object-cover">
                                             <source :src="asset" type="video/mp4">
                                             Your browser does not support the video tag.
                                         </video>
                                     </template>
                                     <template x-if="!asset.endsWith('.mp4')">
                                         <div class="relative w-full" :class="'aspect-[' + project.assetsAspect + ']'">
-                                            <img loading="lazy" :src="asset" :alt="asset.split('/').pop().split('.')[0]"
-                                                class="project-asset w-full h-full object-contain md:absolute transition-all transform opacity-0"
+                                            <div class="h-full overflow-hidden relative"
                                                 x-intersect="showImage(getPreviousAssetsCount() + index)">
+                                                <img loading="lazy" :src="asset"
+                                                    :alt="asset.split('/').pop().split('.')[0]"
+                                                    class="[clip-path:inset(0_0_100%_0)] image w-full h-full object-contain md:absolute transition-all transform "
+                                                    :class="'image-' + (getPreviousAssetsCount() + index)">
+                                            </div>
                                         </div>
                                     </template>
                                 </div>
