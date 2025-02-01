@@ -1,8 +1,9 @@
 <div x-data="initAdventures();setTextAnimation(0.3, 4.7, 0.6, 'linear', '#654F20', false);"
-    class="font-FTLC max-w-3xl sm:text-lg text-lg p-4 lg:px-2 md:mt-10 w-screen m-auto overflow-x-hidden">
-    <div x-data="{
-        isMobile: window.innerWidth <= 640,
-    }" class="flex flex-col items-center gap-4 md:gap-8 mb-10">
+    class="font-FTLC max-w-3xl sm:text-lg text-lg p-4 lg:px-2 md:mt-10 w-screen m-auto overflow-x-hidden"
+    :class="{
+        'overflow-x-hidden': isMobile
+    }">
+    <div class="flex flex-col items-center gap-4 md:gap-8 mb-10">
         <div class="flex justify-between w-full items-center mb-1">
             <!-- <h1 x-data class="font-fingerpaint text-3xl md:text-5xl">
                 ADVENTURE
@@ -65,17 +66,29 @@
             wouldn't say I'm naturally adventurous, but I aspire to be.
         </div>
 
-        <div class="md:mt-4 mt-1 flex flex-col gap-16" x-data="initAdventures()">
-            <template x-for="(adventure, idx) in adventures" :key="adventure.id">
-                <div class="bg-[#fff5df] relative
+        <div class="md:mt-4 mt-1" :class="{
+            'flex flex-col gap-16': isMobile,
+            'relative w-full': !isMobile
+        }">
+            <template x-for="(adventure, index) in adventures" :key="adventure.id">
+                <div x-data="cardStack()" x-on:mouseover="!isMobile ? hoverCard(index) : null"
+                    x-on:mouseleave="!isMobile ? resetCards() : null"
+                    x-on:click="!isMobile ? selectCard(index) : null" :style="!isMobile ? `
+                    z-index: ${adventures.length - index};
+                    margin-top: ${(adventures.length - index - 1) * 50}px;
+                    transform: rotate(${(index - adventures.length / 2) * 3}deg) translateX(${(index - adventures.length / 2) * 10}px);
+                ` : ''" class="bg-[#fff5df] card
    bg-line bg-[center_top_1rem] bg-blend-multiply shadow-[2px_4px_10px_rgba(0,0,0,0.1)] border p-5 rounded-xl border-solid border-[rgba(0,0,0,0.05)]
-  ">
+  " :class="{
+    'absolute w-full card': !isMobile,
+    'relative': isMobile
+}">
                     <div
-                        class="bg-bookmark bg-contain bg-no-repeat w-4 h-10 absolute translate-x-6 -translate-y-[51px]">
+                        class="bg-bookmark cursor-pointer bg-contain bg-no-repeat w-4 h-10 absolute translate-x-6 -translate-y-[51px]">
                     </div>
 
                     <div
-                        class="absolute right-0 w-36 h-36 sm:w-48 sm:h-48 bg-earth bg-no-repeat bg-contain opacity-65 -translate-y-20 translate-x-20 ">
+                        class="absolute cursor-pointer right-0 w-36 h-36 sm:w-48 sm:h-48 bg-earth bg-no-repeat bg-contain opacity-65 -translate-y-20 translate-x-20 ">
 
                     </div>
                     <div class="flex flex-col font-fingerpaint justify-between gap-5 mb-6 ">

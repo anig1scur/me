@@ -79,7 +79,7 @@
                                 class="inline-block bg-travel mb-4 w-48 h-16 bg-left bg-no-repeat bg-contain">
                             </a>
                             <a href="https://blog.piggy.lol/"
-                            class="block mb-8 bg-blog w-[50%] h-20 bg-no-repeat bg-contain">
+                                class="block mb-8 bg-blog w-[50%] h-20 bg-no-repeat bg-contain">
                             </a>
                         </div>
                         <div class="flex items-center gap-2">
@@ -117,6 +117,33 @@
             </svg>
         </template>
     </div>
+
+    <script>
+        function cardStack () {
+            return {
+                hoverCard (index) {
+                    gsap.to(".card", {
+                        y: (i) => (i === index ? -10 : 0),
+                        scale: (i) => (i === index ? 1.05 : 1),
+                        duration: 0.3,
+                    });
+                },
+                resetCards () {
+                    gsap.to(".card", { y: 0, scale: 1, duration: 0.3 });
+                },
+                selectCard (index) {
+                    gsap.to(".card", {
+                        y: (i) => (i === index ? -100 : i > index ? 20 : -20),
+                        opacity: (i) => (i === index ? 1 : 0.5),
+                        scale: (i) => (i === index ? 1.2 : 0.9),
+                        zIndex: (i) => (i === index ? 99 : 0),
+                        duration: 0.4,
+                        ease: "power2.out",
+                    });
+                }
+            };
+        }
+    </script>
 
     <script>
         function router () {
@@ -328,6 +355,7 @@
 
         function initAdventures () {
             return {
+                isMobile: window.innerWidth <= 640,
                 adventures: [
                     {
                         id: "yubeng-2022",
