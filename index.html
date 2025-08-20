@@ -20,7 +20,7 @@
             attrs.forEach(attr => {
                 if (el.hasAttribute(attr)) {
                     const val = el.getAttribute(attr);
-                    if (val.startsWith("./") || val.startsWith("assets") || val.startsWith("js") || val.startsWith("style")) {
+                    if (val.startsWith("./") || val.startsWith("assets") || val.startsWith("js")) {
                         el.setAttribute(attr, base + val.replace(/^.\//, ""));
                     }
                 }
@@ -72,7 +72,9 @@
                             <p>
                                 I'm passionate about crafting designs that combine beauty and function, creating
                                 meaningful and creative tools for users. Beyond work, I'm interested in music making, 3D
-                                modeling, interactive storytelling and pixel painting. I'm also an enthusiastic hiker.
+                                modeling, interactive storytelling and <a href="https://r.piggy.lol/pixel-log/"
+                                    class="underline underline-offset-2 decoration-dotted " target="_blank">pixel
+                                    painting</a>. I'm also an enthusiastic hiker.
 
                             </p>
                         </div>
@@ -174,7 +176,14 @@
                         zIndex: (i) => (i === index ? 99 : 0),
                         duration: 0.4,
                         ease: "power2.out",
-                    });
+                        onComplete: () => {
+                            gsap.to(".card", {
+                                y: (i) => (i === index ? -10 : 0),
+                                scale: (i) => (i === index ? 1.05 : 1),
+                                duration: 0.3,
+                            });
+                        }
+                    })
                 }
             };
         }
@@ -473,26 +482,26 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         wiggle: 'wiggle 1s ease-in-out'
                     },
                     backgroundImage: {
-                        line: "url('./assets/icons/lined-paper-2.png')",
-                        quote: "url('./assets/icons/quote.svg')",
-                        earth: "url('./assets/icons/earth.svg')",
-                        bookmark: "url('./assets/icons/bookmark.svg')",
-                        douban: "url('./assets/icons/douban.svg')",
-                        mail: "url('./assets/icons/mail.svg')",
-                        github: "url('./assets/icons/github.svg')",
-                        linkedin: "url('./assets/icons/linkedin.svg')",
-                        steam: "url('./assets/icons/steam.svg')",
-                        github2: "url('./assets/icons/github-2.svg')",
-                        external: "url('./assets/icons/external.svg')",
-                        adventureIdx: "url('./assets/adventures/index-pc.jpg')",
-                        eunice: "url('./assets/eunice.png')",
-                        design: "url('./assets/design.svg')",
-                        thingsilove: "url('./assets/thingsilove.svg')",
-                        project: "url('./assets/project.svg')",
-                        blog: "url('./assets/blog.svg')",
-                        travel: "url('./assets/travel.svg')",
-                        memo: "url('./assets/memo.svg')",
-                        avatar: "url('./assets/me_at_rinjani.jpg')",
+                        line: `url('${base}assets/icons/lined-paper-2.png')`,
+                        quote:`url('${base}assets/icons/quote.svg')`,
+                        earth:`url('${base}assets/icons/earth.svg')`,
+                        bookmark:`url('${base}assets/icons/bookmark.svg')`,
+                        douban:`url('${base}assets/icons/douban.svg')`,
+                        mail:`url('${base}assets/icons/mail.svg')`,
+                        github:`url('${base}assets/icons/github.svg')`,
+                        linkedin:`url('${base}assets/icons/linkedin.svg')`,
+                        steam:`url('${base}assets/icons/steam.svg')`,
+                        github2:`url('${base}assets/icons/github-2.svg')`,
+                        external:`url('${base}assets/icons/external.svg')`,
+                        adventureIdx: `url('${base}assets/adventures/index-pc.jpg')`,
+                        eunice:`url('${base}assets/eunice.png')`,
+                        design:`url('${base}assets/design.svg')`,
+                        thingsilove:`url('${base}assets/thingsilove.svg')`,
+                        project:`url('${base}assets/project.svg')`,
+                        blog:`url('${base}assets/blog.svg')`,
+                        travel:`url('${base}assets/travel.svg')`,
+                        memo:`url('${base}assets/memo.svg')`,
+                        avatar:`url('${base}assets/me_at_rinjani.jpg')`,
                     },
                     fontFamily: {
                         'pixel': ['pixel', 'sans-serif'],

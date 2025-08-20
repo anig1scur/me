@@ -71,12 +71,12 @@
             'relative w-full': !isMobile
         }">
             <template x-for="(adventure, index) in adventures" :key="adventure.id">
-                <div x-data="cardStack()" x-on:mouseover="!isMobile ? hoverCard(index) : null"
-                    x-on:mouseleave="!isMobile ? resetCards() : null"
-                    x-on:click="!isMobile ? selectCard(index) : null" :style="!isMobile ? `
+                <div x-data="cardStack()" x-on:pointerenter="!isMobile ? hoverCard(index) : null"
+                    x-on:pointerleave="!isMobile ? resetCards() : null"
+                    x-on:pointerdown="!isMobile ? selectCard(index) : null" :style="!isMobile ? `
                     z-index: ${adventures.length - index};
-                    margin-top: ${(adventures.length - index - 1) * 50}px;
-                    transform: rotate(${(index - adventures.length / 2) * 3}deg) translateX(${(index - adventures.length / 2) * 10}px);
+                    margin-top: ${(adventures.length - index - 1) * 40}px;
+                    transform: rotate(${(index - adventures.length / 2) * 3}deg) translateX(${(index - adventures.length / 2) * 15}px);
                 ` : ''" class="bg-[#fff5df] card
    bg-line bg-[center_top_1rem] bg-blend-multiply shadow-[2px_4px_10px_rgba(0,0,0,0.1)] border p-5 rounded-xl border-solid border-[rgba(0,0,0,0.05)]
   " :class="{
@@ -88,7 +88,7 @@
                     </div>
 
                     <div
-                        class="absolute cursor-pointer right-0 w-36 h-36 sm:w-48 sm:h-48 bg-earth bg-no-repeat bg-contain opacity-65 -translate-y-20 translate-x-20 ">
+                        class="absolute cursor-pointer right-0 w-20 h-24  -translate-y-12 translate-x-10  sm:-translate-y-16 sm:translate-x-16 sm:w-32 sm:h-32 bg-earth bg-no-repeat bg-contain opacity-65 ">
 
                     </div>
                     <div class="flex flex-col font-fingerpaint justify-between gap-5 mb-6 ">
