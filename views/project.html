@@ -63,9 +63,25 @@
                             x-text="isExpanded ? '↥less' : '↧more'"></button>
                     </div>
                     <div class="md:w-1/2 md:-mt-28" :class="project.pcLayout === 'col' ? 'md:w-full md:mt-2' : ''">
-                        <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id" x-data="{ 
+                        <div class="max-w-4xl mx-auto relative" :id="'carousel-'+project.id" x-data="{
                                 activeSlide: 1,
                                 slides: project.assets.length,
+                                videoExtensions: ['.webm', '.mp4', '.mov', '.ogg'],
+                                isVideo(asset) {
+                                    // Returns true if the asset's extension is in the videoExtensions list.
+                                    return this.videoExtensions.some(ext => asset.toLowerCase().endsWith(ext));
+                                },
+                                getVideoType(asset) {
+                                    // Returns the appropriate MIME type for the video source tag.
+                                    const extension = '.' + asset.split('.').pop().toLowerCase();
+                                    switch (extension) {
+                                        case '.webm': return 'video/webm';
+                                        case '.mp4': return 'video/mp4';
+                                        case '.mov': return 'video/quicktime';
+                                        case '.ogg': return 'video/ogg';
+                                        default: return '';
+                                    }
+                                },
                                 getPreviousAssetsCount() {
                                     return projects
                                         .slice(0, projectIndex)
@@ -74,14 +90,14 @@
                             }">
                             <template x-for="(asset, index) in project.assets" :key="index">
                                 <div x-show="activeSlide === index + 1" class="rounded-lg overflow-hidden">
-                                    <template x-if="asset.endsWith('.mp4')">
-                                        <video controls="false" preload autoplay muted loop playsinline
+                                    <template x-if="isVideo(asset)">
+                                        <video preload="auto" autoplay muted loop playsinline
                                             class="w-full h-full object-cover">
-                                            <source :src="asset" type="video/mp4">
+                                            <source :src="asset" :type="getVideoType(asset)">
                                             Your browser does not support the video tag.
                                         </video>
                                     </template>
-                                    <template x-if="!asset.endsWith('.mp4')">
+                                    <template x-if="!isVideo(asset)">
                                         <div class="relative w-full" :class="'aspect-[' + project.assetsAspect + ']'">
                                             <div class="h-full overflow-hidden relative"
                                                 x-intersect="showImage(getPreviousAssetsCount() + index)">
@@ -110,8 +126,6 @@
                                     </button>
                                 </div>
                             </div>
-
-                            <!-- Navigation Buttons -->
                             <div class="absolute w-full flex items-center justify-center px-4" x-show="slides > 1">
                                 <template x-for="index in slides" :key="index">
                                     <button
