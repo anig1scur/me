@@ -85,25 +85,90 @@
                                 me at Rinjani summit in 2024 Nov
                             </div>
                             <div class="w-[75%] max-w-72 mt-2 sm:mt-0 flex gap-3 items-center justify-between">
-                                <a href="https://github.com/anig1scur/" target="_blank"
-                                    class="bg-github hover:scale-110 transition-all w-9 h-9 sm:w-7 sm:h-8 bg-[50%] bg-contain bg-no-repeat">
-                                </a>
-                                <a href="https://www.linkedin.com/in/%E2%80%8E-yanxin-zhu-9a4704330/" target="_blank"
-                                    class="bg-linkedin hover:scale-110 transition-all w-8 h-8 sm:w-6 sm:h-6 bg-contain bg-no-repeat">
-                                </a>
-                                <a href="mailto:anigiscur@gmail.com" target="_blank"
-                                    class="bg-mail hover:scale-110 transition-all w-8 h-8 sm:w-6 sm:h-6 bg-contain bg-[50%] bg-no-repeat">
-                                </a>
-                                <a href="https://www.douban.com/people/168117050/" target="_blank"
-                                    class="bg-douban hover:scale-110 w-6 h-6 sm:w-5 sm:h-5 bg-contain bg-[50%] bg-no-repeat">
-                                </a>
-                                <!-- <a href="https://www.douban.com/people/168117050/" target="_blank"
-                                    class="text-[24px] md:text-[19px] hover:scale-110 transition-all bg-[50%] bg-contain bg-no-repeat">
-                                    豆
-                                </a> -->
-                                <a href="https://steamcommunity.com/id/capricious_eunice/" target="_blank"
-                                    class="bg-steam hover:scale-110 transition-all w-8 h-8 sm:w-6 sm:h-6 bg-contain bg-no-repeat">
-                                </a>
+                                <div x-data="socialIcon({ 
+                                      link: 'https://github.com/anig1scur/', 
+                                      iconClass: 'bg-github w-9 h-9 sm:w-7 sm:h-8', 
+                                      tooltipText: '什么时候能天天做喜欢的',
+                                      tooltipTextEn: 'When can I do what I love every day?'
+                                    })" class="relative group">
+                                    <a :href="link" target="_blank"
+                                        class="hover:scale-110 block transition-all bg-[50%] bg-contain bg-no-repeat"
+                                        :class="iconClass">
+                                    </a>
+                                    <div
+                                        class="absolute left-1/2 -translate-x-1/2 top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
+                                        <span x-text="tooltipText"></span>
+                                        <span x-text="tooltipTextEn" class="block"></span>
+                                    </div>
+                                </div>
+
+                                <div x-data="socialIcon({ 
+                                      link: 'https://www.linkedin.com/in/%E2%80%8E-yanxin-zhu-9a4704330/', 
+                                      iconClass: 'bg-linkedin w-8 h-8 sm:w-6 sm:h-6', 
+                                      tooltipText: '生活所迫 在这是伪人',
+                                      tooltipTextEn: 'Life forces me to fake myself here'
+                                    })" class="relative group">
+                                    <a :href="link" target="_blank"
+                                        class="hover:scale-110 block transition-all bg-contain bg-no-repeat"
+                                        :class="iconClass">
+                                    </a>
+                                    <div
+                                        class="absolute left-1/2 -translate-x-1/2 top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 translate-y-1 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
+                                        <span x-text="tooltipText"></span>
+                                        <span x-text="tooltipTextEn" class="block"></span>
+                                    </div>
+                                </div>
+
+                                <div x-data="socialIcon({ 
+                                      link: 'mailto:anigiscur@gmail.com', 
+                                      iconClass: 'bg-mail w-8 h-8 sm:w-6 sm:h-6', 
+                                      tooltipText: '真会有人从这里联系吗',
+                                      tooltipTextEn: 'Will anyone really contact me from here?'
+                                    })" class="relative group">
+                                    <a :href="link" target="_blank"
+                                        class="hover:scale-110 block transition-all bg-[50%] bg-contain bg-no-repeat"
+                                        :class="iconClass">
+                                    </a>
+                                    <div
+                                        class="absolute left-1/2 -translate-x-1/2 top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 translate-y-1 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
+                                        <span x-text="tooltipText"></span>
+                                        <span x-text="tooltipTextEn" class="block"></span>
+                                    </div>
+                                </div>
+
+                                <div x-data="socialIcon({
+                                      link: 'https://www.douban.com/people/168117050/', 
+                                      iconClass: 'bg-douban w-7 h-7 sm:w-6 sm:h-6',
+                                      tooltipText: '看那么多总要记一下吧',
+                                      tooltipTextEn: 'something to look back on when I’m old'
+                                    })" class="relative group">
+                                    <a :href="link" target="_blank"
+                                        class="hover:scale-110 block transition-all bg-contain bg-[50%] bg-no-repeat"
+                                        :class="iconClass">
+                                    </a>
+                                    <div
+                                        class="absolute left-1/2 -translate-x-1/2  top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 translate-y-1 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
+                                        <span x-text="tooltipText"></span>
+                                        <span x-text="tooltipTextEn" class="block"></span>
+                                    </div>
+                                </div>
+
+                                <div x-data="socialIcon({ 
+                                      link: 'https://steamcommunity.com/id/capricious_eunice/', 
+                                      iconClass: 'bg-steam w-8 h-8 sm:w-6 sm:h-6', 
+                                      tooltipText: '陪我打游戏！',
+                                      tooltipTextEn: 'Come play games with me!'
+                                    })" class="relative group">
+                                    <a :href="link" target="_blank"
+                                        class="hover:scale-110 block transition-all bg-contain bg-no-repeat"
+                                        :class="iconClass">
+                                    </a>
+                                    <div
+                                        class="absolute left-1/2 -translate-x-1/2 top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 translate-y-1 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
+                                        <span x-text="tooltipText"></span>
+                                        <span x-text="tooltipTextEn" class="block"></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -156,6 +221,15 @@
     </div>
 
     <script>
+        document.addEventListener("alpine:init", () => {
+            Alpine.data("socialIcon", ({ link, iconClass, tooltipText, tooltipTextEn }) => ({
+                link,
+                iconClass,
+                tooltipText,
+                tooltipTextEn
+            }));
+        });
+
         function cardStack () {
             return {
                 hoverCard (index) {
@@ -483,25 +557,25 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                     },
                     backgroundImage: {
                         line: `url('${base}assets/icons/lined-paper-2.png')`,
-                        quote:`url('${base}assets/icons/quote.svg')`,
-                        earth:`url('${base}assets/icons/earth.svg')`,
-                        bookmark:`url('${base}assets/icons/bookmark.svg')`,
-                        douban:`url('${base}assets/icons/douban.svg')`,
-                        mail:`url('${base}assets/icons/mail.svg')`,
-                        github:`url('${base}assets/icons/github.svg')`,
-                        linkedin:`url('${base}assets/icons/linkedin.svg')`,
-                        steam:`url('${base}assets/icons/steam.svg')`,
-                        github2:`url('${base}assets/icons/github-2.svg')`,
-                        external:`url('${base}assets/icons/external.svg')`,
+                        quote: `url('${base}assets/icons/quote.svg')`,
+                        earth: `url('${base}assets/icons/earth.svg')`,
+                        bookmark: `url('${base}assets/icons/bookmark.svg')`,
+                        douban: `url('${base}assets/icons/douban.svg')`,
+                        mail: `url('${base}assets/icons/mail.svg')`,
+                        github: `url('${base}assets/icons/github.svg')`,
+                        linkedin: `url('${base}assets/icons/linkedin.svg')`,
+                        steam: `url('${base}assets/icons/steam.svg')`,
+                        github2: `url('${base}assets/icons/github-2.svg')`,
+                        external: `url('${base}assets/icons/external.svg')`,
                         adventureIdx: `url('${base}assets/adventures/index-pc.jpg')`,
-                        eunice:`url('${base}assets/eunice.png')`,
-                        design:`url('${base}assets/design.svg')`,
-                        thingsilove:`url('${base}assets/thingsilove.svg')`,
-                        project:`url('${base}assets/project.svg')`,
-                        blog:`url('${base}assets/blog.svg')`,
-                        travel:`url('${base}assets/travel.svg')`,
-                        memo:`url('${base}assets/memo.svg')`,
-                        avatar:`url('${base}assets/me_at_rinjani.jpg')`,
+                        eunice: `url('${base}assets/eunice.png')`,
+                        design: `url('${base}assets/design.svg')`,
+                        thingsilove: `url('${base}assets/thingsilove.svg')`,
+                        project: `url('${base}assets/project.svg')`,
+                        blog: `url('${base}assets/blog.svg')`,
+                        travel: `url('${base}assets/travel.svg')`,
+                        memo: `url('${base}assets/memo.svg')`,
+                        avatar: `url('${base}assets/me_at_rinjani.jpg')`,
                     },
                     fontFamily: {
                         'pixel': ['pixel', 'sans-serif'],
@@ -532,4 +606,4 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
     </script>
 </body>
 
-</html>
+</html
