@@ -203,10 +203,7 @@
             <template x-route="/design" x-template.preload="/views/design.html" x-handler="updateRoute"></template>
             <template x-route="/things-i-love" x-template.preload="/views/things-i-love.html"
                 x-handler="updateRoute"></template>
-            <template x-route="notfound">
-                <div>
-                    <h1>Page Not Found</h1>
-                </div>
+            <template x-route="notfound" x-template.preload="/views/404.html">
             </template>
         </div>
 
@@ -562,6 +559,7 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         bookmark: `url('${base}assets/icons/bookmark.svg')`,
                         douban: `url('${base}assets/icons/douban.svg')`,
                         mail: `url('${base}assets/icons/mail.svg')`,
+                        flash: `url('${base}assets/icons/flash.svg')`,
                         github: `url('${base}assets/icons/github.svg')`,
                         linkedin: `url('${base}assets/icons/linkedin.svg')`,
                         steam: `url('${base}assets/icons/steam.svg')`,
