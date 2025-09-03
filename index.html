@@ -42,6 +42,7 @@
 
     <script src="./js/tailwincss.js"></script>
     <script src="./js/router.js"></script>
+    <script src="./js/rive.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js" defer></script>
     <script src="./js/alpine.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -50,6 +51,8 @@
 </head>
 
 <body>
+    <canvas id="butterfly" class=" w-24 h-24 z-50 absolute translate-x-2/4 -translate-y-2/4 left-0 top-0"></canvas>
+
     <div class="h-dvh tracking-wide min-h-dvh flex justify-center">
         <div id="app"></div>
         <div x-data="router()">
@@ -84,7 +87,7 @@
                         </div>
                         <div class="w-full sm:min-w-[41%] sm:w-[41%] sm:mt-2 flex items-center flex-col gap-2 h-full">
                             <img src="./assets/me_at_rinjani.png" alt="me at rinjani"
-                                class="w-full h-auto aspect-square">
+                                class="can_stay w-full h-auto aspect-square">
                             <div class="italic text-xs opacity-80">
                                 me at Rinjani summit in 2024 Nov
                             </div>
@@ -177,27 +180,28 @@
                         </div>
                     </div>
 
-                    <div class="modules sm:mt-16 2xl:mt-24 mt-6 mb-8"
+                    <div class="modules sm:mt-16 2xl:mt-24 mt-6 mb-8 "
                         x-intersect:enter.threshold.25="$el.classList.add('visible')"
                         x-intersect:leave.threshold.25="$el.classList.remove('visible')">
-                        <a href="/project" class="block mb-5 bg-project w-full h-20 bg-[65%] bg-no-repeat bg-contain">
+                        <a href="/project"
+                            class="can_stay inline-block mb-5 bg-project w-[21.5rem] sm:ml-[15%] md:ml-[25%] h-20 bg-[65%] bg-no-repeat bg-contain">
                         </a>
                         <div class="flex items-center gap-2 justify-between">
                             <a href="/adventure"
-                                class="inline-block bg-travel mb-4 w-52 sm:w-60 h-28 bg-left bg-no-repeat bg-contain">
+                                class="can_stay inline-block bg-travel mb-4 w-52 sm:w-60 h-24 bg-left bg-no-repeat bg-contain">
                             </a>
                             <a href="https://blog.piggy.lol/"
-                                class="block mb-8 bg-blog w-[50%] h-20 bg-no-repeat bg-contain">
+                                class="can_stay mb-10 bg-blog w-[50%] h-20 bg-no-repeat bg-contain">
                             </a>
                         </div>
                         <div class="flex items-center justify-between">
-                            <a href="/design" class="w-[40%] h-24 bg-design bg-center bg-no-repeat bg-contain">
+                            <a href="/design" class="can_stay w-[40%] h-24 bg-design bg-center bg-no-repeat bg-contain">
                             </a>
                             <a target="_blank" href="https://memo.piggy.lol/"
-                                class="w-[30%] h-28 ml-2 sm:ml-4 -mt-20 bg-memo bg-left bg-no-repeat bg-contain">
+                                class="can_stay w-[30%] h-28 ml-2 sm:ml-4 -mt-20 bg-memo bg-left bg-no-repeat bg-contain">
                             </a>
                             <a href="/things-i-love"
-                                class="w-[35%] h-20 sm:h-14 bg-thingsilove bg-center bg-no-repeat bg-contain">
+                                class="can_stay w-[35%] h-20 sm:h-14 bg-thingsilove bg-center bg-no-repeat bg-contain">
                             </a>
                         </div>
                     </div>
@@ -549,6 +553,7 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         mail: `url('${base}assets/icons/mail.svg')`,
                         flash: `url('${base}assets/icons/flash.svg')`,
                         github: `url('${base}assets/icons/github.svg')`,
+                        p_github: `url('${base}assets/icons/p-github.svg')`,
                         linkedin: `url('${base}assets/icons/linkedin.svg')`,
                         steam: `url('${base}assets/icons/steam.svg')`,
                         github2: `url('${base}assets/icons/github-2.svg')`,
@@ -589,6 +594,105 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                 path.style["animation-delay"] = `${i * delay}s`;
             }
         }
+    </script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            const canvas = document.getElementById('butterfly');
+            let landingSpots = [];
+            let isFlyingInput = null;
+            let currentSpotIndex = -1;
+            let flightLoopTimer = null;
+            let lastLandingXFactor = 0.5;
+
+            const riveInstance = new rive.Rive({
+                src: 'assets/butterfly.riv',
+                canvas: canvas,
+                stateMachines: 'StateMachine',
+                autoplay: true,
+                onLoad: () => {
+                    riveInstance.resizeDrawingSurfaceToCanvas();
+                    const inputs = riveInstance.stateMachineInputs('StateMachine');
+                    isFlyingInput = inputs.find(i => i.name === 'isFlying');
+                    gsap.set(canvas, { autoAlpha: 0 });
+                    window.updateButterflySpots = updateLandingSpots;
+                    updateLandingSpots();
+
+                    canvas.addEventListener('mouseenter', () => {
+                        if (isFlyingInput && !isFlyingInput.value) {
+                            clearTimeout(flightLoopTimer);
+                            flyToNextSpot();
+                        }
+                    });
+                },
+            });
+
+            function updateLandingSpots () {
+                landingSpots = document.querySelectorAll('.can_stay');
+                clearTimeout(flightLoopTimer);
+                if (landingSpots.length > 0) {
+                    gsap.set(canvas, { autoAlpha: 1 });
+                    teleportToSpot(0);
+                    flightLoopTimer = setTimeout(flyToNextSpot, 4000);
+                } else {
+                    gsap.set(canvas, { autoAlpha: 0 });
+                }
+            }
+
+            function teleportToSpot (index) {
+                if (index >= landingSpots.length) return;
+                currentSpotIndex = index;
+                const spot = landingSpots[index];
+                const rect = spot.getBoundingClientRect();
+                const targetX = rect.right - rect.width * 0.2;
+                const targetY = rect.top - 20;
+                gsap.set(canvas, { x: targetX, y: targetY, rotation: 0 });
+            }
+
+            function flyToNextSpot () {
+                if (!isFlyingInput || landingSpots.length === 0) return;
+                let nextSpotIndex;
+                do {
+                    nextSpotIndex = Math.floor(Math.random() * landingSpots.length);
+                } while (landingSpots.length > 1 && nextSpotIndex === currentSpotIndex);
+
+                const targetSpot = landingSpots[nextSpotIndex];
+                const rect = targetSpot.getBoundingClientRect();
+                lastLandingXFactor = (Math.random() - 0.5) * 0.3;
+                const targetX = rect.left + rect.width * lastLandingXFactor;
+                const targetY = rect.top - 20;
+
+                const currentX = gsap.getProperty(canvas, "x");
+                const currentY = gsap.getProperty(canvas, "y");
+
+                const dx = targetX - currentX;
+                const dy = targetY - currentY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                const speed = 120;
+                const duration = distance / speed;
+
+                const direction = targetX >= currentX ? -1 : 1;
+
+                isFlyingInput.value = true;
+                gsap.to(canvas, {
+                    x: targetX,
+                    y: targetY,
+                    duration: duration,
+                    ease: 'power1.inOut',
+                    onStart: () => {
+                        gsap.to(canvas, { scaleX: direction, duration: 0.5, ease: "power2.out" });
+                    },
+                    onComplete: () => {
+                        isFlyingInput.value = false;
+                        currentSpotIndex = nextSpotIndex;
+
+                        const idleTime = Math.random() * 8000 + 8000;
+                        flightLoopTimer = setTimeout(flyToNextSpot, idleTime);
+                    },
+                });
+            }
+
+        });
     </script>
 </body>
 
