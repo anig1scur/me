@@ -51,9 +51,9 @@
 </head>
 
 <body>
-    <canvas id="butterfly" class=" w-24 h-24 z-50 absolute translate-x-2/4 -translate-y-2/4 left-0 top-0"></canvas>
+    <div class="tracking-wide flex justify-center overflow-x-hidden relative">
+        <canvas id="butterfly" class=" w-24 h-24 z-50 absolute translate-x-2/4 -translate-y-2/4 left-0 top-0"></canvas>
 
-    <div class="h-dvh tracking-wide min-h-dvh flex justify-center">
         <div id="app"></div>
         <div x-data="router()">
             <template x-route="/" x-handler="updateRoute">
@@ -277,6 +277,11 @@
                 updateRoute (context) {
                     document.body.className = context.route.slice(1)
                     window.scrollTo(0, 0);
+                    this.$nextTick(() => {
+                        if (window.updateButterflySpots) {
+                            window.updateButterflySpots();
+                        }
+                    });
                 }
             }
         }
@@ -691,7 +696,6 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                     },
                 });
             }
-
         });
     </script>
 </body>
