@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capricious Eunice</title>
+    <title>Capricious Aeris</title>
     <link rel="icon" href="./favicon.png" />
     <script>
         const lang = navigator.language || '';
@@ -38,8 +38,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             rewriteContainerCDN();
         });
-    </script>
 
+    </script>
+    <script>
+        (function () {
+            var redirect = sessionStorage.redirect;
+            delete sessionStorage.redirect;
+            if (redirect && redirect != location.href) {
+                history.replaceState(null, null, redirect);
+            }
+        })();
+    </script>
     <script src="./js/tailwincss.js"></script>
     <script src="./js/router.js"></script>
     <script src="./js/rive.js"></script>
@@ -58,11 +67,11 @@
         <div x-data="router()">
             <template x-route="/" x-handler="updateRoute">
                 <div class="max-w-2xl sm:text-xl text-lg py-2 px-6 sm:py-6 lg:px-2 w-screen m-auto">
-                    <div class="flex items-center justify-between mb-3 gap-2 sm:gap-6 sm:mt-4 sm:mb-8 lg:mt-8">
-                        <h1 class="font-futura text-4xl sm:text-5xl font-bold whitespace-nowrap">Hi, I am
+                    <div class="flex items-center justify-between mb-3 gap-3 sm:gap-8 sm:mt-4 sm:mb-8 lg:mt-8">
+                        <h1 class="font-futura text-[32px] sm:text-5xl font-bold whitespace-nowrap">Hi, I am
                         </h1>
                         <div
-                            class="inline-block bg-eunice w-[70%] sm:w-full min-h-24 sm:h-32 bg-center bg-no-repeat bg-contain">
+                            class="inline-block bg-aeris w-[70%] sm:w-full min-h-24 sm:h-32 bg-center bg-no-repeat bg-contain">
                         </div>
                     </div>
                     <div
@@ -72,16 +81,16 @@
                                 After graduating with a degree in Info Security, I began my career as a front end
                                 engineer in Beijing. Now I'm pursuing my master's degree in game programming in Chicago.
                                 You can check my resume <a target="_blank" class="u"
-                                    href="https://r.piggy.lol/crease/">here</a>.
+                                    href="https://o.aeriszhu.com/">here</a>.
                             </p>
                             <p>
                                 I'm passionate about crafting designs that combine beauty and function, creating
                                 creative tools. Beyond work, I'm interested in music making,
                                 <a class="u" href="https://woai.meme/">interactive storytelling</a>,
                                 3D modeling,
-                                <a class="u" href="https://r.piggy.lol/pixel-log/" target="_blank">pixel
+                                <a class="u" href="https://aeriszhu.com/pixel-log/" target="_blank">pixel
                                     painting</a>, hiking
-                                and <a class="u" href="#/things-i-love">more</a>.
+                                and <a class="u" href="/things-i-love">more</a>.
 
                             </p>
                         </div>
@@ -161,7 +170,7 @@
                                 </div>
 
                                 <div x-data="socialIcon({ 
-                                      link: 'https://steamcommunity.com/id/capricious_eunice/', 
+                                      link: 'https://steamcommunity.com/id/capricious_aeris/', 
                                       iconClass: 'bg-steam w-8 h-8 sm:w-6 sm:h-6', 
                                       tooltipText: '陪我打游戏！',
                                       tooltipTextEn: 'Come play games with me!'
@@ -190,14 +199,14 @@
                             <a href="/adventure"
                                 class="can_stay inline-block bg-travel mb-4 w-52 sm:w-60 h-24 bg-left bg-no-repeat bg-contain">
                             </a>
-                            <a href="https://blog.piggy.lol/"
+                            <a href="https://blog.aeriszhu.com/"
                                 class="can_stay mb-10 bg-blog w-[50%] h-20 bg-no-repeat bg-contain">
                             </a>
                         </div>
                         <div class="flex items-center justify-between">
                             <a href="/design" class="can_stay w-[40%] h-24 bg-design bg-center bg-no-repeat bg-contain">
                             </a>
-                            <a target="_blank" href="https://memo.piggy.lol/"
+                            <a target="_blank" href="https://memo.aeriszhu.com/"
                                 class="can_stay w-[30%] h-28 ml-2 sm:ml-4 -mt-20 bg-memo bg-left bg-no-repeat bg-contain">
                             </a>
                             <a href="/things-i-love"
@@ -213,8 +222,6 @@
             <template x-route="/design" x-template.preload="/views/design.html" x-handler="updateRoute"></template>
             <template x-route="/things-i-love" x-template.preload="/views/things-i-love.html"
                 x-handler="updateRoute"></template>
-            <template x-route="notfound" x-template.preload="/views/404.html">
-            </template>
         </div>
 
         <template id="home-icon">
@@ -292,18 +299,19 @@
         })
 
         document.addEventListener('alpine:init', () => {
-            // does browserrouter work in Github Pages?
-            window.PineconeRouter.settings.hash = true
-            window.PineconeRouter.settings.basePath = '/'
-            window.PineconeRouter.settings.templateTargetId = 'app'
+            window.PineconeRouter.settings.hash = false;
+
+            window.PineconeRouter.settings.basePath = '/';
+
+            window.PineconeRouter.settings.templateTargetId = 'app';
             window.PineconeRouter.settings.interceptLinks = true;
 
             Alpine.data('homeIcon', () => ({
                 init () {
                     this.$el.innerHTML = document.getElementById('home-icon').content.cloneNode(true).children[0].outerHTML;
                 }
-            }))
-        })
+            }));
+        });
     </script>
 
     <script defer>
@@ -384,7 +392,7 @@
                         title: "Skyline",
                         created: "2024/05",
                         pcLayout: "col",
-                        url: "https://r.piggy.lol/skyline/",
+                        url: "https://aeriszhu.com/skyline/",
                         github: "https://github.com/anig1scur/skyline",
                         techstacks: ["React.js", "Three.js"],
                         assetsAspect: "1.8/1",
@@ -396,7 +404,7 @@
                         title: "fcitx5 theme designer",
                         created: "2024/11",
                         pcLayout: "col",
-                        url: "https://r.piggy.lol/fcitx5-theme-designer",
+                        url: "https://aeriszhu.com/fcitx5-theme-designer",
                         github: "https://github.com/anig1scur/fcitx5-theme-designer/",
                         techstacks: ["Next.js", "Tailwind CSS"],
                         description: `As an Arch Linux user and a fan of the fcitx5 input method, I had a problem while trying to customize my theme. I could only modify the config file and had to constantly kill and restart the fcitx5 to see how the theme would look. That's when I decided to create fcitx5-theme-designer.
@@ -564,7 +572,7 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         github2: `url('${base}assets/icons/github-2.svg')`,
                         external: `url('${base}assets/icons/external.svg')`,
                         adventureIdx: `url('${base}assets/adventures/index-pc.jpg')`,
-                        eunice: `url('${base}assets/eunice.png')`,
+                        aeris: `url('${base}assets/aeris.png')`,
                         design: `url('${base}assets/design.png')`,
                         thingsilove: `url('${base}assets/thingsilove.png')`,
                         project: `url('${base}assets/project.png')`,
@@ -649,7 +657,7 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                 const spot = landingSpots[index];
                 const rect = spot.getBoundingClientRect();
                 const targetX = rect.right - rect.width * 0.2;
-                const targetY = rect.top - 20;
+                const targetY = rect.top - 15;
                 gsap.set(canvas, { x: targetX, y: targetY, rotation: 0 });
             }
 
