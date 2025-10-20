@@ -52,6 +52,11 @@
     background-color: #e7dbf2;
     color: #472c5a;
   }
+
+  body.notfound {
+    background-color: #F7F7F7;
+    color: #686868;
+  }
 }
 
 @layer components {

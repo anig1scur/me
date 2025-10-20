@@ -60,168 +60,20 @@
 </head>
 
 <body>
-    <div class="tracking-wide flex justify-center overflow-x-hidden relative">
+    <div x-data="router()" class="tracking-wide flex justify-center overflow-x-hidden relative">
         <canvas id="butterfly" class=" w-24 h-24 z-50 absolute translate-x-2/4 -translate-y-2/4 left-0 top-0"></canvas>
 
         <div id="app"></div>
-        <div x-data="router()">
-            <template x-route="/" x-handler="updateRoute">
-                <div class="max-w-2xl sm:text-xl text-lg py-2 px-6 sm:py-6 lg:px-2 w-screen m-auto">
-                    <div class="flex items-center justify-between mb-3 gap-3 sm:gap-8 sm:mt-4 sm:mb-8 lg:mt-8">
-                        <h1 class="font-futura text-[32px] sm:text-5xl font-bold whitespace-nowrap">Hi, I am
-                        </h1>
-                        <div
-                            class="inline-block bg-aeris w-[70%] sm:w-full min-h-24 sm:h-32 bg-center bg-no-repeat bg-contain">
-                        </div>
-                    </div>
-                    <div
-                        class="font-FTLC tracking-wide flex items-start gap-4 lg:gap-7 mb-9 flex-col-reverse sm:flex-row">
-                        <div class="mt-2 sm:mt-0 flex flex-col gap-4 sm:leading-[1.55] lg:leading-8 leading-[1.5]">
-                            <p class="flex-[100%] ">
-                                After graduating with a degree in Info Security, I began my career as a front end
-                                engineer in Beijing. Now I'm pursuing my master's degree in game programming in Chicago.
-                                You can check my resume <a target="_blank" class="u"
-                                    href="https://o.aeriszhu.com/">here</a>.
-                            </p>
-                            <p>
-                                I'm passionate about crafting designs that combine beauty and function, creating
-                                creative tools. Beyond work, I'm interested in music making,
-                                <a class="u" href="https://woai.meme/">interactive storytelling</a>,
-                                3D modeling,
-                                <a class="u" href="https://aeriszhu.com/pixel-log/" target="_blank">pixel
-                                    painting</a>, hiking
-                                and <a class="u" href="/things-i-love">more</a>.
+        <div>
+            <template x-route="/" x-template.preload="/views/home.html" x-handler="updateRoute"></template>
 
-                            </p>
-                        </div>
-                        <div class="w-full sm:min-w-[41%] sm:w-[41%] sm:mt-2 flex items-center flex-col gap-2 h-full">
-                            <img src="./assets/me_at_rinjani.png" alt="me at rinjani"
-                                class="can_stay w-full h-auto aspect-square">
-                            <div class="italic text-xs opacity-80">
-                                me at Rinjani summit in 2024 Nov
-                            </div>
-                            <div class="w-[75%] max-w-72 mt-2 sm:mt-0 flex gap-3 items-center justify-between">
-                                <div x-data="socialIcon({ 
-                                      link: 'https://github.com/anig1scur/', 
-                                      iconClass: 'bg-github w-9 h-9 sm:w-7 sm:h-7',
-                                      tooltipText: '什么时候能天天做喜欢的',
-                                      tooltipTextEn: 'When can I do what I love every day?'
-                                    })" class="relative group">
-                                    <a :href="link" target="_blank"
-                                        class="hover:scale-110 block transition-all bg-[50%] bg-contain bg-no-repeat"
-                                        :class="iconClass">
-                                    </a>
-                                    <div
-                                        class="absolute left-1/2 -translate-x-1/2 top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
-                                        <span x-text="tooltipText"></span>
-                                        <span x-text="tooltipTextEn" class="block"></span>
-                                    </div>
-                                </div>
-
-                                <div x-data="socialIcon({ 
-                                      link: 'https://www.linkedin.com/in/%E2%80%8E-yanxin-zhu-9a4704330/', 
-                                      iconClass: 'bg-linkedin w-8 h-8 sm:w-6 sm:h-6', 
-                                      tooltipText: '生活所迫 在这是伪人',
-                                      tooltipTextEn: 'Life forces me to fake myself here'
-                                    })" class="relative group">
-                                    <a :href="link" target="_blank"
-                                        class="hover:scale-110 block transition-all bg-contain bg-no-repeat"
-                                        :class="iconClass">
-                                    </a>
-                                    <div
-                                        class="absolute left-1/2 -translate-x-1/2 top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 translate-y-1 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
-                                        <span x-text="tooltipText"></span>
-                                        <span x-text="tooltipTextEn" class="block"></span>
-                                    </div>
-                                </div>
-
-                                <div x-data="socialIcon({ 
-                                      link: 'mailto:anigiscur@gmail.com', 
-                                      iconClass: 'bg-mail w-9 h-9 sm:w-7 sm:h-7', 
-                                      tooltipText: '真会有人从这里联系吗',
-                                      tooltipTextEn: 'Will anyone really contact me from here?'
-                                    })" class="relative group">
-                                    <a :href="link" target="_blank"
-                                        class="hover:scale-110 block transition-all bg-[50%] bg-contain bg-no-repeat"
-                                        :class="iconClass">
-                                    </a>
-                                    <div
-                                        class="absolute left-1/2 -translate-x-1/2 top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 translate-y-1 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
-                                        <span x-text="tooltipText"></span>
-                                        <span x-text="tooltipTextEn" class="block"></span>
-                                    </div>
-                                </div>
-
-                                <div x-data="socialIcon({
-                                      link: 'https://www.douban.com/people/168117050/', 
-                                      iconClass: 'bg-douban w-7 h-7 sm:w-6 sm:h-6',
-                                      tooltipText: '看那么多总要记一下吧',
-                                      tooltipTextEn: 'something to look back on when I’m old'
-                                    })" class="relative group">
-                                    <a :href="link" target="_blank"
-                                        class="hover:scale-110 block transition-all bg-contain bg-[50%] bg-no-repeat"
-                                        :class="iconClass">
-                                    </a>
-                                    <div
-                                        class="absolute left-1/2 -translate-x-1/2  top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 translate-y-1 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
-                                        <span x-text="tooltipText"></span>
-                                        <span x-text="tooltipTextEn" class="block"></span>
-                                    </div>
-                                </div>
-
-                                <div x-data="socialIcon({ 
-                                      link: 'https://steamcommunity.com/id/capricious_aeris/', 
-                                      iconClass: 'bg-steam w-8 h-8 sm:w-6 sm:h-6', 
-                                      tooltipText: '陪我打游戏！',
-                                      tooltipTextEn: 'Come play games with me!'
-                                    })" class="relative group">
-                                    <a :href="link" target="_blank"
-                                        class="hover:scale-110 block transition-all bg-contain bg-no-repeat"
-                                        :class="iconClass">
-                                    </a>
-                                    <div
-                                        class="absolute left-1/2 -translate-x-1/2 top-full text-center pt-1 sm:pt-2 px-2 text-[0.6rem] leading-3  sm:leading-4 whitespace-nowrap opacity-0 translate-y-1 group-hover:opacity-80 group-hover:translate-y-0 transition-all duration-200">
-                                        <span x-text="tooltipText"></span>
-                                        <span x-text="tooltipTextEn" class="block"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modules sm:mt-16 2xl:mt-24 mt-6 mb-8 "
-                        x-intersect:enter.threshold.25="$el.classList.add('visible')"
-                        x-intersect:leave.threshold.25="$el.classList.remove('visible')">
-                        <a href="/project"
-                            class="can_stay inline-block mb-5 bg-project w-[21.5rem] sm:ml-[15%] md:ml-[25%] h-20 bg-[65%] bg-no-repeat bg-contain">
-                        </a>
-                        <div class="flex items-center gap-2 justify-between">
-                            <a href="/adventure"
-                                class="can_stay inline-block bg-travel mb-4 w-52 sm:w-60 h-24 bg-left bg-no-repeat bg-contain">
-                            </a>
-                            <a href="https://blog.aeriszhu.com/"
-                                class="can_stay mb-10 bg-blog w-[50%] h-20 bg-no-repeat bg-contain">
-                            </a>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <a href="/design" class="can_stay w-[40%] h-24 bg-design bg-center bg-no-repeat bg-contain">
-                            </a>
-                            <a target="_blank" href="https://memo.aeriszhu.com/"
-                                class="can_stay w-[30%] h-28 ml-2 sm:ml-4 -mt-20 bg-memo bg-left bg-no-repeat bg-contain">
-                            </a>
-                            <a href="/things-i-love"
-                                class="can_stay w-[35%] h-20 sm:h-14 bg-thingsilove bg-center bg-no-repeat bg-contain">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </template>
             <template x-route="/project" x-template.preload="/views/project.html" x-handler="updateRoute"></template>
             <template x-route="/adventure" x-template.preload="/views/adventure.html"
                 x-handler="updateRoute"></template>
             <template x-route="/design" x-template.preload="/views/design.html" x-handler="updateRoute"></template>
             <template x-route="/things-i-love" x-template.preload="/views/things-i-love.html"
                 x-handler="updateRoute"></template>
+            <template x-route="notfound" x-template.preload="/views/notfound.html"></template>
         </div>
 
         <template id="home-icon">
@@ -282,13 +134,20 @@
         function router () {
             return {
                 updateRoute (context) {
-                    document.body.className = context.route.slice(1)
+                    const routes = ['', 'project', 'design', 'adventure', 'things-i-love'];
+                    const route = context.route.slice(1)
+                    document.body.className = routes.includes(route) ? route : 'notfound';
                     window.scrollTo(0, 0);
                     this.$nextTick(() => {
                         if (window.updateButterflySpots) {
                             window.updateButterflySpots();
                         }
                     });
+                },
+                handleNotFoundRedirect () {
+                    setTimeout(() => {
+                        window.PineconeRouter.navigate('/');
+                    }, 2000);
                 }
             }
         }
@@ -300,9 +159,7 @@
 
         document.addEventListener('alpine:init', () => {
             window.PineconeRouter.settings.hash = false;
-
             window.PineconeRouter.settings.basePath = '/';
-
             window.PineconeRouter.settings.templateTargetId = 'app';
             window.PineconeRouter.settings.interceptLinks = true;
 
@@ -328,16 +185,19 @@
                 projects: [
                     {
                         id: "douban-zoo",
-                        title: "Douban Zoo Yearbook",
+                        title: "Douban Zoo",
                         created: "2025/08",
                         pcLayout: "col",
+                        assetsAspect: "2/1",
                         url: "https://douban-zoo.github.io/",
                         github: "https://github.com/douban-zoo/douban-zoo.github.io",
                         techstacks: ["Svelte.js", "Three.js", "GSAP"],
-                        description: `This summer I built a small interactive 3D book project. The idea came after seeing How to Talk to White Kids About Racism, I wondered what it would feel like if a book could flip in the browser, with each page showing a different cute pet. The photos and videos come from friends who generously shared their pets. Thanks for them!
+                        description: `This summer I built a small interactive 3D book project. It's made with Three.js for rendering and GSAP for animation. The idea came after seeing How to Talk to White Kids About Racism.
 
-                        It's made with Three.js for rendering and GSAP for animation. I tried many ways to make the parallex effect of materials when flipping and finally I'm content with it. Each page is actually a separate plane with its own material, so the front and back can transition independently. Enjoy!`,
-                        assets: ["./assets/projects/douban-zoo.webm"]
+                    I wondered what it would feel like if a book could flip in the browser, with each page showing a different cute pet. The photos and videos come from friends who generously shared their pets. Thanks for them!
+
+                    I tried many ways to make the parallex effect of materials when flipping and finally I'm content with it. Each page is actually a separate plane with its own material, so the front and back can transition independently. Enjoy!`,
+                        assets: [["./assets/projects/douban-zoo.webm", "./assets/projects/douban-zoo.mp4"]]
                     },
                     {
                         id: "no-pcr",
@@ -347,11 +207,11 @@
                         techstacks: ["React.js", "Tailwind CSS"],
                         description: `It was born during a hackathon in the fall of 2022. It's a game where players decide whether they need a PCR test based on the number of days since their last test and their travel requirements.
 
-                        The project emerged in response to the endless PCR testing demands in Beijing at that time. Although it can't be open-sourced for various reasons, I really love the idea behind it. My colleagues in backend, frontend, and design completed it together while we were in lockdown.
+                    The project emerged in response to the endless PCR testing demands in Beijing at that time. Although it can't be open-sourced for various reasons, I really love the idea behind it. My colleagues in backend, frontend, and design completed it together while we were in lockdown.
 
-                        The repository is humorously titled "Have you done nuclear acid today?" originally reflecting a playful take on the term "核酸"
-                        `,
-                        assets: ["./assets/projects/no-pcr-2.png", "./assets/projects/no-pcr.png", "./assets/projects/no-pcr.webm"]
+                    The repository is humorously titled "Have you done nuclear acid today?" originally reflecting a playful take on the term "核酸"
+                    `,
+                        assets: ["./assets/projects/no-pcr-2.png", "./assets/projects/no-pcr.png", ["./assets/projects/no-pcr.mp4", "./assets/projects/no-pcr.webm"]]
                     },
                     {
                         id: "pdf-outliner",
@@ -361,7 +221,7 @@
                         github: "https://github.com/anig1scur/pdf-outliner",
                         techstacks: ["Svelte", "PDF format", "PDF-lib.js"],
                         description: `It's a web app allowing users add or edit PDF outlines / Table of contents in browser env. No need to download anything.
-                        `,
+                    `,
                         pcLayout: "col",
                         assetsAspect: "1.6/1",
                         assets: ["./assets/projects/pdf-outliner.png"],
@@ -375,10 +235,10 @@
                         techstacks: ["Colyseus.js", "PIXI.js", "React.js"],
                         description: `"Jouer", which comes from the French word for "play" originated from a board game called "Scout" that some friends and I played.
 
-                        It's a simple yet fun game for 2-5 players. Interestingly, just as I was nearly done finishing the game project, I lost interest in it, lol. This is actually my first attempt at creating a game application, and I found the experience really fun.
+                    It's a simple yet fun game for 2-5 players. Interestingly, just as I was nearly done finishing the game project, I lost interest in it, lol. This is actually my first attempt at creating a game application, and I found the experience really fun.
 
-                        For this project, I used Colyseus to manage the room-related logic, which made handling multiplayer sessions much easier. I handled the design myself, though I'm not fully satisfied with some of the details yet. Wish I could continue refining it until it's exactly how I want it.
-                        `,
+                    For this project, I used Colyseus to manage the room-related logic, which made handling multiplayer sessions much easier. I handled the design myself, though I'm not fully satisfied with some of the details yet. Wish I could continue refining it until it's exactly how I want it.
+                    `,
                         pcLayout: "col",
                         assetsAspect: "3/2",
                         assets: ["./assets/projects/jouer.png", "./assets/projects/jouer2.png"],
@@ -392,10 +252,10 @@
                         techstacks: ["Python", "Github Actions", "React.js"],
                         description: `The "Pod", which I started in June 2024 while preparing for an English exam, grew out of my discovery that listening to podcasts really helped improve my language skills. After the exam, I decided to develop an app around that idea.
 
-                        I used Python to crawl podcast data and GitHub Actions for scheduled updates, so any new content gets automatically synced to the app. It currently includes four podcasts, and I plan to add more in the future. It also supports exporting pdf of the transcript.
+                    I used Python to crawl podcast data and GitHub Actions for scheduled updates, so any new content gets automatically synced to the app. It currently includes four podcasts, and I plan to add more in the future. It also supports exporting pdf of the transcript.
 
-                        It's been an enjoyable experience blending my personal interests with a project that can keep growing.
-                        `,
+                    It's been an enjoyable experience blending my personal interests with a project that can keep growing.
+                    `,
                         pcLayout: "col",
                         assetsAspect: "3/2",
                         assets: ["./assets/projects/pod.png", "./assets/projects/pod2.png"],
@@ -422,9 +282,9 @@
                         techstacks: ["Next.js", "Tailwind CSS"],
                         description: `As an Arch Linux user and a fan of the fcitx5 input method, I had a problem while trying to customize my theme. I could only modify the config file and had to constantly kill and restart the fcitx5 to see how the theme would look. That's when I decided to create fcitx5-theme-designer.
 
-                        This tool helps users preview the theme directly, without the need for constant restarts, and also allows them to export the theme in a format supported by fcitx5. 
+                    This tool helps users preview the theme directly, without the need for constant restarts, and also allows them to export the theme in a format supported by fcitx5.
 
-                        It's been a useful project that streamlines the customization process and makes it much easier to experiment with themes.
+                    It's been a useful project that streamlines the customization process and makes it much easier to experiment with themes.
 `,
                         assetsAspect: "2/1",
                         assets: ["./assets/projects/fcitx5.png"],
@@ -492,9 +352,9 @@
                         },
                         description: `In the winter of 2022, although I hadn't fully recovered from the Covid that I caught two weeks prior, I enthusiastically accepted my buddies' invitation to hike in Yubeng village.
 
-                Thanks to my buddies' planning, I didn't need to do any preparation or research about this place. However, it turned out to be an incredible first multi-day trekking experience for me.
+            Thanks to my buddies' planning, I didn't need to do any preparation or research about this place. However, it turned out to be an incredible first multi-day trekking experience for me.
 
-                My favorite part of the trip was hiking the Chongcao route. Under clear skies, I was deeply moved by the surrounding snow-capped mountains. Even now, I can still recall the crisp, cold air at the mountain peak.`,
+            My favorite part of the trip was hiking the Chongcao route. Under clear skies, I was deeply moved by the surrounding snow-capped mountains. Even now, I can still recall the crisp, cold air at the mountain peak.`,
                         imgs: ["./assets/adventures/yubeng/1.jpg", "./assets/adventures/yubeng/2.jpg", "./assets/adventures/yubeng/3.jpg", "./assets/adventures/yubeng/4.jpg", "./assets/adventures/yubeng/5.jpg", "./assets/adventures/yubeng/6.jpg"]
                     },
                     {
@@ -588,7 +448,7 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         aeris: `url('${base}assets/aeris.png')`,
                         design: `url('${base}assets/design.png')`,
                         thingsilove: `url('${base}assets/thingsilove.png')`,
-                        project: `url('${base}assets/project.png')`,
+                        project: `url('${base}assets/project.svg')`,
                         blog: `url('${base}assets/blog.png')`,
                         travel: `url('${base}assets/travel.png')`,
                         memo: `url('${base}assets/memo.png')`,
