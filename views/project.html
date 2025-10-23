@@ -91,21 +91,26 @@
                             <template x-for="(asset, index) in project.assets" :key="index">
                                 <div x-show="activeSlide === index + 1" class="rounded-lg overflow-hidden">
                                     <template x-if="isVideo(asset)">
-                                        <video preload="auto" autoplay muted loop playsinline class="w-full h-full object-cover">
-                                            <template x-for="videoSrc in asset" :key="videoSrc">
-                                                <source :src="videoSrc" :type="getVideoType(videoSrc)">
-                                            </template>
-                                            Your browser does not support the video tag.
-                                        </video>
+                                        <div class="w-full relative" :class="'aspect-[' + project.assetsAspect + '] '">
+                                            <video preload="auto" autoplay muted loop playsinline
+                                                class="w-full h-auto object-cover">
+                                                <template x-for="videoSrc in asset" :key="videoSrc">
+                                                    <source :src="videoSrc" :type="getVideoType(videoSrc)">
+                                                </template>
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
                                     </template>
+
+
                                     <template x-if="!isVideo(asset)">
                                         <div class="relative w-full" :class="'aspect-[' + project.assetsAspect + ']'">
                                             <div class="h-full overflow-hidden relative"
                                                 x-intersect="showImage(getPreviousAssetsCount() + index)">
                                                 <img loading="lazy" :src="asset"
                                                     :alt="asset.split('/').pop().split('.')[0]"
-                                                    class="image [clip-path:inset(0_0_100%_0)] w-[90vw] md:w-full h-full object-contain md:absolute transition-all transform "
-                                                    :class="'image-' + (getPreviousAssetsCount() + index)">
+                                                    class="image [clip-path:inset(0_0_100%_0)] w-[90vw] md:w-full h-full object-contain md:absolute transition-all transform"
+                                                    :class="'image-' + (getPreviousAssetsCount() + index)" />
                                             </div>
                                         </div>
                                     </template>

@@ -188,7 +188,7 @@
                         title: "Douban Zoo",
                         created: "2025/08",
                         pcLayout: "col",
-                        assetsAspect: "2/1",
+                        assetsAspect: "1.64/1",
                         url: "https://douban-zoo.github.io/",
                         github: "https://github.com/douban-zoo/douban-zoo.github.io",
                         techstacks: ["Svelte.js", "Three.js", "GSAP"],
@@ -211,7 +211,7 @@
 
                     The repository is humorously titled "Have you done nuclear acid today?" originally reflecting a playful take on the term "核酸"
                     `,
-                        assets: ["./assets/projects/no-pcr-2.png", "./assets/projects/no-pcr.png", ["./assets/projects/no-pcr.mp4", "./assets/projects/no-pcr.webm"]]
+                        assets: ["./assets/projects/no-pcr-2.webp", "./assets/projects/no-pcr.webp", ["./assets/projects/no-pcr.mp4", "./assets/projects/no-pcr.webm"]]
                     },
                     {
                         id: "pdf-outliner",
@@ -224,7 +224,7 @@
                     `,
                         pcLayout: "col",
                         assetsAspect: "1.6/1",
-                        assets: ["./assets/projects/pdf-outliner.png"],
+                        assets: ["./assets/projects/pdf-outliner.webp"],
                     },
                     {
                         id: "jouer",
@@ -241,7 +241,7 @@
                     `,
                         pcLayout: "col",
                         assetsAspect: "3/2",
-                        assets: ["./assets/projects/jouer.png", "./assets/projects/jouer2.png"],
+                        assets: ["./assets/projects/jouer.webp", "./assets/projects/jouer2.webp"],
                     },
                     {
                         id: "pod",
@@ -258,7 +258,7 @@
                     `,
                         pcLayout: "col",
                         assetsAspect: "3/2",
-                        assets: ["./assets/projects/pod.png", "./assets/projects/pod2.png"],
+                        assets: ["./assets/projects/pod.webp", "./assets/projects/pod2.webp"],
                     },
                     {
                         id: "skyline",
@@ -270,7 +270,7 @@
                         techstacks: ["React.js", "Three.js"],
                         assetsAspect: "1.8/1",
                         description: `The "Skyline" is a Web visulization app to generate 3D Contributions for Github, which can export .STL file for 3D printing and customize icons / name on the model`,
-                        assets: ["./assets/projects/skyline-1.png", "./assets/projects/skyline-2.png"],
+                        assets: ["./assets/projects/skyline-1.webp", "./assets/projects/skyline-2.webp"],
                     },
                     {
                         id: "fcitx5-theme-designer",
@@ -287,7 +287,7 @@
                     It's been a useful project that streamlines the customization process and makes it much easier to experiment with themes.
 `,
                         assetsAspect: "2/1",
-                        assets: ["./assets/projects/fcitx5.png"],
+                        assets: ["./assets/projects/fcitx5.webp"],
 
                     }
                 ],
@@ -299,19 +299,19 @@
             return {
                 designs: [
                     "Firstly, I drew something on paper like toy handwriting and tried to use Figma prototyping it",
-                    "first_try.png",
+                    "first_try.webp",
                     "This is the first integrated project under J's help, which is an app for clipping poem from pictures",
-                    "poem.png",
+                    "poem.webp",
                     "Then I spent some time on forum UI, but all of them looked so unaesthetic :(",
-                    "second_try.png",
+                    "second_try.webp",
                     "I like the left one in the below, which needs some trick to build it. I haven't made that so far",
-                    "group.png",
+                    "group.webp",
                     "Also, I use this skill to draw some pictures in my daily work",
-                    "sys.png",
+                    "sys.webp",
                     "I practice design by doing an online board game",
-                    "jouer.png",
+                    "jouer.webp",
                     "Now, I'm designing my portfolio step by step",
-                    "portfolio.png",
+                    "portfolio.webp",
                     "Things keep going ... "
                 ],
                 initGSAP (el) {
@@ -431,7 +431,7 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         wiggle: 'wiggle 1s ease-in-out'
                     },
                     backgroundImage: {
-                        line: `url('${base}assets/icons/lined-paper-2.png')`,
+                        line: `url('${base}assets/icons/lined-paper-2.webp')`,
                         quote: `url('${base}assets/icons/quote.svg')`,
                         earth: `url('${base}assets/icons/earth.svg')`,
                         bookmark: `url('${base}assets/icons/bookmark.svg')`,
@@ -445,13 +445,13 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         github2: `url('${base}assets/icons/github-2.svg')`,
                         external: `url('${base}assets/icons/external.svg')`,
                         adventureIdx: `url('${base}assets/adventures/index-pc.jpg')`,
-                        aeris: `url('${base}assets/aeris.png')`,
-                        design: `url('${base}assets/design.png')`,
-                        thingsilove: `url('${base}assets/thingsilove.png')`,
+                        aeris: `url('${base}assets/aeris.webp')`,
+                        design: `url('${base}assets/design.webp')`,
+                        thingsilove: `url('${base}assets/thingsilove.webp')`,
                         project: `url('${base}assets/project.svg')`,
-                        blog: `url('${base}assets/blog.png')`,
-                        travel: `url('${base}assets/travel.png')`,
-                        memo: `url('${base}assets/memo.png')`,
+                        blog: `url('${base}assets/blog.webp')`,
+                        travel: `url('${base}assets/travel.webp')`,
+                        memo: `url('${base}assets/memo.webp')`,
                         avatar: `url('${base}assets/me_at_rinjani.jpg')`,
                     },
                     fontFamily: {
@@ -543,8 +543,11 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
 
                 const targetSpot = landingSpots[nextSpotIndex];
                 const rect = targetSpot.getBoundingClientRect();
-                lastLandingXFactor = (Math.random() - 0.5) * 0.3;
-                const targetX = rect.left + rect.width * lastLandingXFactor;
+                lastLandingXFactor = (Math.random() - 0.5) * 0.3; 
+
+                const basePositionFactor = 0.8; 
+
+                const targetX = rect.left + rect.width * (basePositionFactor + lastLandingXFactor);
                 const targetY = rect.top - 20;
 
                 const currentX = gsap.getProperty(canvas, "x");
