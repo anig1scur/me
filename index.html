@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capricious Aeris</title>
     <link rel="icon" href="./favicon.png" />
+    <link rel="stylesheet" href="./style.css">
     <script>
         const lang = navigator.language || '';
         const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
@@ -56,7 +57,6 @@
     <script src="./js/alpine.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -184,6 +184,24 @@
                 },
                 projects: [
                     {
+                        id: "tocify",
+                        title: "Tocify",
+                        created: "2025/02",
+                        url: "https://tocify.vercel.app/",
+                        github: "https://github.com/anig1scur/tocify",
+                        techstacks: ["SvelteKit", "Google Gemini Flash", "Vercel Serverless", "PDF-lib.js"],
+                        description: `Tocify is a web app allowing users add or edit PDF outlines / Table of contents in browser env. The AI generation is an optional feature to accelerate and simplify the process of building ToC from zero.
+
+                        I built Tocify out of frustration with old scanned books that have no Table of Contents, jumping between chapters was painful, and most tools I found were either paywalled or required tedious manual input.
+
+So I made it that runs entirely in the browser and uses AI to reconstruct ToCs from existing index pages. No downloads, no uploads, just a quiet fix for an old PDF without ToCs.
+                    `,
+                        pcLayout: "col",
+                        assetsAspect: "1.5/1",
+                        assets: ["./assets/projects/tocify0.webp", "./assets/projects/tocify1.webp", "./assets/projects/tocify2.webp", ["./assets/projects/tocify-demo.mp4","./assets/projects/tocify-demo.webm"]],
+                    },
+
+                    {
                         id: "douban-zoo",
                         title: "Douban Zoo",
                         created: "2025/08",
@@ -212,19 +230,6 @@
                     The repository is humorously titled "Have you done nuclear acid today?" originally reflecting a playful take on the term "核酸"
                     `,
                         assets: ["./assets/projects/no-pcr-2.webp", "./assets/projects/no-pcr.webp", ["./assets/projects/no-pcr.mp4", "./assets/projects/no-pcr.webm"]]
-                    },
-                    {
-                        id: "pdf-outliner",
-                        title: "PDF Outliner",
-                        created: "2025/02",
-                        url: "https://pdf-outliner.piggy.lol",
-                        github: "https://github.com/anig1scur/pdf-outliner",
-                        techstacks: ["Svelte", "PDF format", "PDF-lib.js"],
-                        description: `It's a web app allowing users add or edit PDF outlines / Table of contents in browser env. No need to download anything.
-                    `,
-                        pcLayout: "col",
-                        assetsAspect: "1.6/1",
-                        assets: ["./assets/projects/pdf-outliner.webp"],
                     },
                     {
                         id: "jouer",
@@ -451,8 +456,7 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
                         project: `url('${base}assets/project.svg')`,
                         blog: `url('${base}assets/blog.webp')`,
                         travel: `url('${base}assets/travel.webp')`,
-                        memo: `url('${base}assets/memo.webp')`,
-                        avatar: `url('${base}assets/me_at_rinjani.jpg')`,
+                        memo: `url('${base}assets/memo.webp')`
                     },
                     fontFamily: {
                         'pixel': ['pixel', 'sans-serif'],
@@ -543,9 +547,9 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
 
                 const targetSpot = landingSpots[nextSpotIndex];
                 const rect = targetSpot.getBoundingClientRect();
-                lastLandingXFactor = (Math.random() - 0.5) * 0.3; 
+                lastLandingXFactor = (Math.random() - 0.5) * 0.3;
 
-                const basePositionFactor = 0.8; 
+                const basePositionFactor = 0.8;
 
                 const targetX = rect.left + rect.width * (basePositionFactor + lastLandingXFactor);
                 const targetY = rect.top - 20;
@@ -582,6 +586,8 @@ Although Rinjani's altitude isn't particularly high, the Day 2 summit push was i
             }
         });
     </script>
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
 </body>
 
 </html>

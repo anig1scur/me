@@ -1,30 +1,37 @@
-
 @font-face {
   font-family: 'pixel';
-  src: url('./assets/fonts/PixelifySans-Bold.ttf');
+  src: url('./assets/fonts/PixelifySans-Bold.woff2'),
+    url('./assets/fonts/PixelifySans-Bold.ttf');
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'pixel';
-  src: url('./assets/fonts/PixelifySans-Regular.ttf');
+  src: url('./assets/fonts/PixelifySans-Regular.woff2'),
+    url('./assets/fonts/PixelifySans-Regular.ttf');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'fingerpaint';
-  src: url('./assets/fonts/FingerPaint-Regular.ttf');
+  src: url('./assets/fonts/FingerPaint-Regular.woff2') format('woff2'),
+    url('./assets/fonts/FingerPaint-Regular.ttf');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'FTLC';
-  src: url('./assets/fonts/FTLC.ttf');
+  src: url('./assets/fonts/FTLC.woff2') format('woff2'),
+    url('./assets/fonts/FTLC.ttf');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @layer base {
@@ -119,7 +126,7 @@
 
   a.u {
     text-decoration-line: underline !important;
-    text-decoration-style:dotted !important;
+    text-decoration-style: dotted !important;
     text-underline-offset: 2px !important;
   }
 
